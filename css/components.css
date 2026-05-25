@@ -1330,17 +1330,19 @@
 /* Panel */
 .mascot-widget__panel {
   position: fixed;
-  bottom: 320px;
+  bottom: auto;
+  top: 90px;
   right: 24px;
   width: 360px;
+  max-height: calc(100vh - 380px);
   background: var(--color-primary-light);
   border: 1px solid var(--color-glass-border);
   border-radius: var(--border-radius-lg);
   box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(245,166,35,0.1);
-  overflow: hidden;
+  overflow-y: auto;
   opacity: 0;
-  transform: translateY(10px) scale(0.95);
-  transform-origin: bottom right;
+  transform: translateY(-10px) scale(0.95);
+  transform-origin: top right;
   pointer-events: none;
   transition: opacity var(--transition-base), transform var(--transition-base);
   z-index: 901;
