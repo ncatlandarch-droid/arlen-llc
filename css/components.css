@@ -1329,9 +1329,9 @@
 
 /* Panel */
 .mascot-widget__panel {
-  position: absolute;
-  bottom: calc(100% + 20px);
-  right: 0;
+  position: fixed;
+  bottom: 320px;
+  right: 24px;
   width: 360px;
   background: var(--color-primary-light);
   border: 1px solid var(--color-glass-border);
@@ -1343,6 +1343,7 @@
   transform-origin: bottom right;
   pointer-events: none;
   transition: opacity var(--transition-base), transform var(--transition-base);
+  z-index: 901;
 }
 
 .mascot-widget__panel.open {

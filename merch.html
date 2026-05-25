@@ -3,12 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Merch &mdash; Arlen LLC | Official Branded Gear</title>
-  <meta name="description" content="Shop official Arlen LLC branded merchandise. T-shirts, hoodies, hats, and work polos. Powered by Printful &mdash; premium print-on-demand, shipped directly to you.">
+  <title>Merch &mdash; Arlen LLC | Official Gear &amp; Apparel</title>
+  <meta name="description" content="Shop official Arlen LLC merchandise. Premium t-shirts, hoodies, hats, and work polos featuring the Arlen brand. Powered by Printful - ships directly to you.">
   <link rel="icon" type="image/png" href="assets/logo/favicon.png">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .merch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-2xl); margin-top: var(--sp-3xl); }
+    .merch-card { background: var(--color-primary-light); border: 1px solid var(--color-glass-border); border-radius: var(--border-radius-lg); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .merch-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(245, 166, 35, 0.15); }
+    .merch-card__image { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .merch-card__body { padding: var(--sp-xl); }
+    .merch-card__name { font-family: var(--font-heading); font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--color-text); margin-bottom: var(--sp-xs); }
+    .merch-card__desc { font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--sp-lg); line-height: 1.6; }
+    .merch-card__price { font-size: var(--fs-xl); font-weight: var(--fw-extrabold); color: var(--color-secondary); }
+    .merch-card__sizes { font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: var(--sp-xs); }
+    .merch-card__footer { display: flex; align-items: center; justify-content: space-between; margin-top: var(--sp-lg); }
+    .merch-badge { display: inline-block; background: rgba(245,166,35,0.15); color: var(--color-secondary); font-size: var(--fs-xs); font-weight: var(--fw-semibold); padding: 4px 12px; border-radius: 100px; letter-spacing: 0.05em; }
+    .merch-hero-mascot { display: flex; align-items: center; justify-content: center; gap: var(--sp-3xl); flex-wrap: wrap; margin-top: var(--sp-2xl); }
+    .merch-hero-mascot img { width: 200px; height: 200px; border-radius: var(--border-radius-full); border: 4px solid var(--color-secondary); object-fit: cover; box-shadow: 0 12px 40px rgba(245, 166, 35, 0.3); }
+  </style>
 </head>
 <body>
 
@@ -38,113 +55,127 @@
   <section class="page-hero">
     <div class="container">
       <span class="section-label">Official Gear</span>
-      <h1 class="page-hero__title">Arlen <span class="text-gradient">Merch</span></h1>
-      <p class="page-hero__subtitle">Rep the brand. Wear the brilliance. Premium quality merchandise &mdash; printed on demand and shipped directly to your door.</p>
+      <h1 class="page-hero__title">Arlen <span class="text-gradient">Merch Store</span></h1>
+      <p class="page-hero__subtitle">Rep the brand. Premium apparel modeled by our Chief Brand Officer himself.</p>
+      <div class="merch-hero-mascot">
+        <img src="assets/images/mascot.png" alt="Arlen the Chihuahua - Chief Brand Officer">
+      </div>
     </div>
   </section>
 
-  <!-- Merch Grid -->
+  <!-- Products -->
   <section class="section">
     <div class="container">
-      <div class="merch-grid stagger">
-        <div class="merch-card">
-          <div class="merch-card__image">
-            <img src="assets/logo/arlen-icon.png" alt="Arlen Logo">
-            <div class="merch-card__badge"><span class="badge">Coming Soon</span></div>
-          </div>
-          <div class="merch-card__body">
-            <h3 class="merch-card__title">Classic Logo Tee</h3>
-            <p class="merch-card__price">Starting at $28</p>
-          </div>
-        </div>
-        <div class="merch-card">
-          <div class="merch-card__image">
-            <img src="assets/logo/arlen-icon.png" alt="Arlen Logo">
-            <div class="merch-card__badge"><span class="badge">Coming Soon</span></div>
-          </div>
-          <div class="merch-card__body">
-            <h3 class="merch-card__title">Premium Hoodie</h3>
-            <p class="merch-card__price">Starting at $48</p>
-          </div>
-        </div>
-        <div class="merch-card">
-          <div class="merch-card__image">
-            <img src="assets/logo/arlen-icon.png" alt="Arlen Logo">
-            <div class="merch-card__badge"><span class="badge">Coming Soon</span></div>
-          </div>
-          <div class="merch-card__body">
-            <h3 class="merch-card__title">Snapback Cap</h3>
-            <p class="merch-card__price">Starting at $24</p>
-          </div>
-        </div>
-        <div class="merch-card">
-          <div class="merch-card__image">
-            <img src="assets/logo/arlen-icon.png" alt="Arlen Logo">
-            <div class="merch-card__badge"><span class="badge">Coming Soon</span></div>
-          </div>
-          <div class="merch-card__body">
-            <h3 class="merch-card__title">Work Polo</h3>
-            <p class="merch-card__price">Starting at $35</p>
-          </div>
-        </div>
-        <div class="merch-card">
-          <div class="merch-card__image">
-            <img src="assets/images/mascot.png" alt="Mascot Design">
-            <div class="merch-card__badge"><span class="badge">Coming Soon</span></div>
-          </div>
-          <div class="merch-card__body">
-            <h3 class="merch-card__title">Mascot Edition Tee</h3>
-            <p class="merch-card__price">Starting at $30</p>
-          </div>
-        </div>
-        <div class="merch-card">
-          <div class="merch-card__image">
-            <img src="assets/logo/arlen-icon.png" alt="Arlen Logo">
-            <div class="merch-card__badge"><span class="badge">Coming Soon</span></div>
-          </div>
-          <div class="merch-card__body">
-            <h3 class="merch-card__title">Crew Neck Sweatshirt</h3>
-            <p class="merch-card__price">Starting at $42</p>
-          </div>
-        </div>
-        <div class="merch-card">
-          <div class="merch-card__image">
-            <img src="assets/logo/arlen-icon.png" alt="Arlen Logo">
-            <div class="merch-card__badge"><span class="badge">Coming Soon</span></div>
-          </div>
-          <div class="merch-card__body">
-            <h3 class="merch-card__title">Dad Hat</h3>
-            <p class="merch-card__price">Starting at $22</p>
-          </div>
-        </div>
-        <div class="merch-card">
-          <div class="merch-card__image">
-            <img src="assets/images/mascot.png" alt="Mascot Sticker">
-            <div class="merch-card__badge"><span class="badge">Coming Soon</span></div>
-          </div>
-          <div class="merch-card__body">
-            <h3 class="merch-card__title">Mascot Sticker Pack</h3>
-            <p class="merch-card__price">Starting at $8</p>
-          </div>
-        </div>
+      <div class="text-center reveal">
+        <span class="section-label">The Collection</span>
+        <h2 class="section-title">Arlen <span class="text-gradient">Essentials</span></h2>
+        <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">Premium quality apparel shipped directly to your door. Every purchase supports the Arlen mission.</p>
       </div>
 
-      <!-- Printful Note -->
-      <div class="merch-note reveal">
-        <div class="merch-note__icon">ðŸ–¨ï¸</div>
-        <h3 style="margin-bottom: var(--sp-sm);">Powered by Printful</h3>
-        <p style="max-width: 500px; margin: 0 auto;">Our merchandise is printed on demand with premium quality materials. Each item is made just for you and shipped directly to your door. No inventory waste &mdash; just quality gear when you want it.</p>
+      <div class="merch-grid">
+        <!-- Classic Logo Tee -->
+        <div class="merch-card reveal">
+          <img src="assets/images/merch-tee.png" alt="Arlen Classic Logo T-Shirt with Arlen modeling" class="merch-card__image" loading="lazy">
+          <div class="merch-card__body">
+            <div class="merch-badge">Best Seller</div>
+            <h3 class="merch-card__name" style="margin-top: var(--sp-sm);">Classic Logo Tee</h3>
+            <p class="merch-card__desc">Bella + Canvas 3001 unisex staple tee. Soft ringspun cotton with the signature Arlen gold logo. The shirt that started it all.</p>
+            <div class="merch-card__footer">
+              <div>
+                <div class="merch-card__price">$28</div>
+                <div class="merch-card__sizes">S &bull; M &bull; L &bull; XL &bull; 2XL</div>
+              </div>
+              <a href="contact.html?service=merch&item=classic-tee" class="btn btn--primary">Order Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium Hoodie -->
+        <div class="merch-card reveal">
+          <img src="assets/images/merch-hoodie.png" alt="Arlen Premium Hoodie with Arlen modeling" class="merch-card__image" loading="lazy">
+          <div class="merch-card__body">
+            <div class="merch-badge">Crew Favorite</div>
+            <h3 class="merch-card__name" style="margin-top: var(--sp-sm);">Premium Hoodie</h3>
+            <p class="merch-card__desc">Gildan 18500 heavy blend hoodie. Warm, durable, and built for long installs on cold December nights. Arlen gold logo front and center.</p>
+            <div class="merch-card__footer">
+              <div>
+                <div class="merch-card__price">$45</div>
+                <div class="merch-card__sizes">S &bull; M &bull; L &bull; XL &bull; 2XL</div>
+              </div>
+              <a href="contact.html?service=merch&item=hoodie" class="btn btn--primary">Order Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dad Hat -->
+        <div class="merch-card reveal">
+          <img src="assets/images/merch-hat.png" alt="Arlen Classic Dad Hat with Arlen modeling" class="merch-card__image" loading="lazy">
+          <div class="merch-card__body">
+            <div class="merch-badge">Fan Favorite</div>
+            <h3 class="merch-card__name" style="margin-top: var(--sp-sm);">Classic Dad Hat</h3>
+            <p class="merch-card__desc">Yupoong 6245CM classic dad hat. Embroidered gold Arlen logo on the front. Adjustable strap fits all. Perfect for job sites or weekends.</p>
+            <div class="merch-card__footer">
+              <div>
+                <div class="merch-card__price">$28</div>
+                <div class="merch-card__sizes">One Size</div>
+              </div>
+              <a href="contact.html?service=merch&item=dad-hat" class="btn btn--primary">Order Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Polo -->
+        <div class="merch-card reveal">
+          <img src="assets/images/merch-polo.png" alt="Arlen Work Polo with Arlen modeling" class="merch-card__image" loading="lazy">
+          <div class="merch-card__body">
+            <div class="merch-badge">Pro Series</div>
+            <h3 class="merch-card__name" style="margin-top: var(--sp-sm);">Work Polo</h3>
+            <p class="merch-card__desc">Bella + Canvas 3001 work polo. Clean, professional, and built for the field. The same shirt Dylan wears on every job. Arlen logo on chest.</p>
+            <div class="merch-card__footer">
+              <div>
+                <div class="merch-card__price">$32</div>
+                <div class="merch-card__sizes">S &bull; M &bull; L &bull; XL</div>
+              </div>
+              <a href="contact.html?service=merch&item=work-polo" class="btn btn--primary">Order Now</a>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">Print-on-Demand <span class="text-gradient">Shipping</span></h2>
+      </div>
+      <div class="why-grid stagger" style="margin-top: var(--sp-2xl);">
+        <div class="value-card">
+          <h3 class="value-card__title">You Order</h3>
+          <p class="value-card__text">Choose your item, size, and quantity. Place your order directly through our site.</p>
+        </div>
+        <div class="value-card">
+          <h3 class="value-card__title">We Print</h3>
+          <p class="value-card__text">Your item is printed fresh by Printful using premium direct-to-garment technology. No mass production &mdash; each piece made just for you.</p>
+        </div>
+        <div class="value-card">
+          <h3 class="value-card__title">Ships to You</h3>
+          <p class="value-card__text">Delivered directly to your door in 3-7 business days. Quality guaranteed or your money back.</p>
+        </div>
+      </div>
+      <p class="text-center reveal" style="margin-top: var(--sp-2xl); color: var(--color-text-muted); font-size: var(--fs-sm);">Powered by Printful &bull; Premium print-on-demand fulfillment</p>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section section--dark">
+  <section class="section">
     <div class="container">
       <div class="cta-banner reveal">
-        <h2 class="cta-banner__title">Store <span class="text-gradient">Opening Soon</span></h2>
-        <p class="cta-banner__text">We're putting the finishing touches on our merch collection. Want to be notified when the store goes live? Drop us a message!</p>
-        <a href="contact.html" class="btn btn--primary btn--lg">Notify Me</a>
+        <h2 class="cta-banner__title">Want Custom <span class="text-gradient">Team Gear?</span></h2>
+        <p class="cta-banner__text">Need branded apparel for your crew, event, or organization? We do bulk orders with custom designs and discounted pricing.</p>
+        <a href="contact.html" class="btn btn--primary btn--lg">Contact for Bulk Orders</a>
       </div>
     </div>
   </section>
@@ -166,12 +197,14 @@
           <a href="services.html" class="footer__link">Holiday Lighting</a>
           <a href="services.html" class="footer__link">Permanent LED</a>
           <a href="services.html" class="footer__link">Landscape Lighting</a>
+          <a href="services.html" class="footer__link">Drone Inspections</a>
           <a href="services.html" class="footer__link">Window Cleaning</a>
         </div>
         <div>
           <h4 class="footer__heading">Company</h4>
           <a href="about.html" class="footer__link">About Us</a>
           <a href="portfolio.html" class="footer__link">Portfolio</a>
+          <a href="experience.html" class="footer__link">3D Experience</a>
           <a href="merch.html" class="footer__link">Merch</a>
           <a href="contact.html" class="footer__link">Contact</a>
         </div>
@@ -194,7 +227,42 @@
     </div>
   </footer>
 
+  <!-- Mascot Widget -->
+  <div class="mascot-widget" id="mascot-widget">
+    <div class="mascot-widget__trigger" id="mascot-trigger">
+      <div class="mascot-widget__bubble" id="mascot-bubble">
+        <img src="assets/images/mascot.png" alt="Arlen the Chihuahua">
+        <span class="mascot-widget__voice-badge" id="voice-badge">&#128266;</span>
+        <span class="mascot-widget__badge" id="mascot-badge" style="display:none;">1</span>
+      </div>
+      <div class="mascot-widget__label">ARLEN</div>
+    </div>
+    <div class="mascot-widget__panel" id="mascot-panel">
+      <div class="mascot-widget__header">
+        <img src="assets/images/mascot.png" alt="Arlen" class="mascot-widget__avatar">
+        <div>
+          <div class="mascot-widget__name">Arlen</div>
+          <div class="mascot-widget__status"><span class="mascot-widget__status-dot"></span> Ready to help!</div>
+        </div>
+        <button class="mascot-widget__close" id="mascot-close">&times;</button>
+      </div>
+      <div class="mascot-widget__body">
+        <div class="mascot-widget__greeting">
+          <strong>Looking fresh!</strong> Check out our gear &mdash; I personally model every piece to make sure it meets my standards.
+        </div>
+        <div class="mascot-widget__actions">
+          <a href="contact.html" class="mascot-widget__action" data-speak="quote">Place an Order <span class="mascot-widget__action-arrow">&rarr;</span></a>
+          <a href="services.html" class="mascot-widget__action" data-speak="services">Explore Services <span class="mascot-widget__action-arrow">&rarr;</span></a>
+          <a href="contact.html" class="mascot-widget__action" data-speak="quote">Bulk / Custom Orders <span class="mascot-widget__action-arrow">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="mascot-widget__footer">
+        <span class="mascot-widget__footer-text">Powered by Arlen &times; AVA Technology</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/tts.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
-
