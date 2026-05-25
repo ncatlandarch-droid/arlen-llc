@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &mdash; Arlen LLC | Get a Free Lighting Quote</title>
+  <meta name="description" content="Contact Arlen LLC for a free lighting consultation and quote. Serving Greensboro, Asheville, Boone NC and Tampa Bay FL with premium exterior lighting and home services.">
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/logo/arlen-icon.png" alt="Arlen LLC Icon">
+        <span class="nav__logo-text">ARLEN</span>
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="services.html" class="nav__link">Services</a>
+        <a href="experience.html" class="nav__link">3D Experience</a>
+        <a href="portfolio.html" class="nav__link">Portfolio</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="merch.html" class="nav__link">Merch</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="contact.html" class="btn btn--primary nav__cta">Get a Quote</a>
+      </div>
+      <div class="nav__hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Get in Touch</span>
+      <h1 class="page-hero__title">Let's Bring <span class="text-gradient">Brilliance</span> to Your Property</h1>
+      <p class="page-hero__subtitle">Request a free consultation, ask a question, or just say hello. We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form + Info -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-split">
+        <!-- Form — Netlify Forms powered -->
+        <div class="reveal">
+          <h2 style="font-size: var(--fs-2xl); margin-bottom: var(--sp-sm);">Request a Free Quote</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--sp-2xl);">Tell us about your property and what you're looking for. We'll get back to you within 24 hours with a custom proposal.</p>
+
+          <form id="contact-form" name="arlen-quotes" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+            <!-- Honeypot for spam -->
+            <p style="display:none;">
+              <label>Don't fill this out: <input name="bot-field"></label>
+            </p>
+
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name *</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address *</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="service">Service Interest</label>
+                <select id="service" name="service" class="form-select">
+                  <option value="">Select a service...</option>
+                  <option value="holiday">Holiday Lighting</option>
+                  <option value="permanent">Permanent LED System</option>
+                  <option value="landscape">Landscape Lighting</option>
+                  <option value="window">Window Cleaning</option>
+                  <option value="drone-3d">Drone Scan / 3D Experience</option>
+                  <option value="multiple">Multiple Services</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="property">Property Type</label>
+              <select id="property" name="property" class="form-select">
+                <option value="">Select property type...</option>
+                <option value="residential-small">Residential &mdash; Small Home</option>
+                <option value="residential-large">Residential &mdash; Large / Estate</option>
+                <option value="commercial">Commercial Building</option>
+                <option value="municipal">Municipal / Downtown</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="address">Property Address (optional)</label>
+              <input type="text" id="address" name="address" class="form-input" placeholder="123 Main St, Greensboro, NC">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Tell Us About Your Project *</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Describe your property, what you're envisioning, and any specific requests or questions..." required></textarea>
+            </div>
+            <div class="form-group" style="margin-bottom: var(--sp-lg);">
+              <label style="display: flex; align-items: center; gap: var(--sp-sm); color: var(--color-text-muted); font-size: var(--fs-sm); cursor: pointer;">
+                <input type="checkbox" name="newsletter" value="yes" style="width: 18px; height: 18px; accent-color: var(--color-secondary);">
+                Keep me updated with seasonal lighting tips and special offers
+              </label>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;">Send My Request</button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="reveal-right">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">&#128222;</div>
+            <div>
+              <p class="contact-info-label">Phone</p>
+              <p class="contact-info-value">(336) 555-ARLEN</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">&#9993;</div>
+            <div>
+              <p class="contact-info-label">Email</p>
+              <p class="contact-info-value">hello@arlenllc.com</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">&#127968;</div>
+            <div>
+              <p class="contact-info-label">Headquarters</p>
+              <p class="contact-info-value">Greensboro, NC</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">&#127758;</div>
+            <div>
+              <p class="contact-info-label">Service Areas</p>
+              <p class="contact-info-value">Greensboro &bull; Asheville &bull; Boone &bull; Tampa Bay</p>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="hours-list">
+            <h3 style="font-size: var(--fs-lg); margin-bottom: var(--sp-md);">Business Hours</h3>
+            <div class="hours-item">
+              <span class="hours-item__day">Monday &mdash; Friday</span>
+              <span class="hours-item__time">8:00 AM &mdash; 6:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span class="hours-item__day">Saturday</span>
+              <span class="hours-item__time">9:00 AM &mdash; 4:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span class="hours-item__day">Sunday</span>
+              <span class="hours-item__time">By Appointment</span>
+            </div>
+          </div>
+
+          <!-- Map placeholder -->
+          <div class="map-placeholder">
+            <span>Interactive Map &mdash; Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="section section--dark">
+    <div class="container text-center">
+      <h2 class="section-title reveal">Stay in the <span class="text-gradient">Loop</span></h2>
+      <p class="section-subtitle reveal" style="max-width: 500px; margin: var(--sp-md) auto var(--sp-xl);">Get seasonal lighting tips, exclusive offers, and be the first to know about new services.</p>
+      <form name="arlen-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; gap: var(--sp-md); max-width: 500px; margin: 0 auto;" class="reveal">
+        <p style="display:none;"><label>Don't fill: <input name="bot-field"></label></p>
+        <input type="email" name="email" class="form-input" placeholder="Enter your email" required style="flex: 1;">
+        <button type="submit" class="btn btn--primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="assets/logo/arlen-icon.png" alt="Arlen">
+            <span class="footer__logo-text">ARLEN</span>
+            <img src="assets/images/mascot.png" alt="Arlen Mascot" class="footer__mascot">
+          </div>
+          <p class="footer__description">Premium exterior lighting and home services. Brilliance in Every Detail.</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Services</h4>
+          <a href="services.html" class="footer__link">Holiday Lighting</a>
+          <a href="services.html" class="footer__link">Permanent LED</a>
+          <a href="services.html" class="footer__link">Landscape Lighting</a>
+          <a href="services.html" class="footer__link">Window Cleaning</a>
+          <a href="services.html" class="footer__link">Drone / 3D Experience</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <a href="about.html" class="footer__link">About Us</a>
+          <a href="portfolio.html" class="footer__link">Portfolio</a>
+          <a href="experience.html" class="footer__link">3D Experience</a>
+          <a href="merch.html" class="footer__link">Merch</a>
+          <a href="contact.html" class="footer__link">Contact</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Service Areas</h4>
+          <a href="#" class="footer__link">Greensboro, NC</a>
+          <a href="#" class="footer__link">Asheville, NC</a>
+          <a href="#" class="footer__link">Boone, NC</a>
+          <a href="#" class="footer__link">Tampa Bay, FL</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 Arlen LLC. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social" aria-label="Facebook">f</a>
+          <a href="#" class="footer__social" aria-label="Instagram">ig</a>
+          <a href="#" class="footer__social" aria-label="TikTok">tk</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mascot Widget -->
+  <div class="mascot-widget" id="mascot-widget">
+    <div class="mascot-widget__trigger" id="mascot-trigger">
+      <div class="mascot-widget__bubble" id="mascot-bubble">
+        <img src="assets/images/mascot.png" alt="Arlen the Chihuahua">
+        <span class="mascot-widget__voice-badge" id="voice-badge">&#128266;</span>
+        <span class="mascot-widget__badge" id="mascot-badge" style="display:none;">1</span>
+      </div>
+      <div class="mascot-widget__label">ARLEN</div>
+    </div>
+    <div class="mascot-widget__panel" id="mascot-panel">
+      <div class="mascot-widget__header">
+        <img src="assets/images/mascot.png" alt="Arlen" class="mascot-widget__avatar">
+        <div>
+          <div class="mascot-widget__name">Arlen</div>
+          <div class="mascot-widget__status"><span class="mascot-widget__status-dot"></span> Ready to help!</div>
+        </div>
+        <button class="mascot-widget__close" id="mascot-close">&times;</button>
+      </div>
+      <div class="mascot-widget__body">
+        <div class="mascot-widget__greeting">
+          <strong>Hey!</strong> Ready to get a quote? Fill out the form and we'll have a custom proposal to you within 24 hours!
+        </div>
+        <div class="mascot-widget__actions">
+          <a href="#contact-form" class="mascot-widget__action" data-speak="quote">Fill Out the Form <span class="mascot-widget__action-arrow">&rarr;</span></a>
+          <a href="services.html" class="mascot-widget__action" data-speak="services">Explore Services <span class="mascot-widget__action-arrow">&rarr;</span></a>
+          <a href="experience.html" class="mascot-widget__action" data-speak="drone">3D Design Experience <span class="mascot-widget__action-arrow">&rarr;</span></a>
+          <a href="tel:3365552753" class="mascot-widget__action" data-speak="call">Call Us Directly <span class="mascot-widget__action-arrow">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="mascot-widget__footer">
+        <span class="mascot-widget__footer-text">Powered by Arlen &times; AVA Technology</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/tts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
