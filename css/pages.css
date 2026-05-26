@@ -1,5 +1,5 @@
 /* ============================================
-   ARLEN LLC — Page-Specific Styles
+   ARLAN LLC — Page-Specific Styles
    ============================================ */
 
 /* --- Homepage: Video Hero --- */
@@ -175,7 +175,7 @@
   .services-grid { grid-template-columns: 1fr; }
 }
 
-/* --- Homepage: Why Arlen --- */
+/* --- Homepage: Why Arlan --- */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -1,41 +1,41 @@
 /* ============================================
-   ARLEN LLC - Mascot TTS Engine
+   ARLAN LLC - Mascot TTS Engine
    Pre-recorded WAV + Live Gemini TTS fallback
    Voice: Enceladus (warm, friendly male)
    ============================================ */
 
-const ArlenTTS = (() => {
+const ArlanTTS = (() => {
   const TTS_MODEL = 'gemini-2.5-flash-preview-tts';
   const VOICE_NAME = 'Enceladus';
   let apiKey = null;
   let isSpeaking = false;
   let queue = [];
-  let muted = localStorage.getItem('arlen-tts-muted') === 'true';
+  let muted = localStorage.getItem('arlan-tts-muted') === 'true';
   let audioCtx = null;
   let currentSource = null;
   let currentAudioEl = null;
 
   // Pre-recorded WAV files for instant playback
   const PRE_RECORDED = {
-    welcome:   'assets/audio/arlen-welcome.wav',
-    quote:     'assets/audio/arlen-quote.wav',
-    services:  'assets/audio/arlen-services.wav',
-    merch:     'assets/audio/arlen-merch.wav',
-    drone:     'assets/audio/arlen-drone.wav',
-    goodbye:   'assets/audio/arlen-goodbye.wav',
-    about:     'assets/audio/arlen-about.wav',
-    portfolio: 'assets/audio/arlen-portfolio.wav'
+    welcome:   'assets/audio/arlan-welcome.wav',
+    quote:     'assets/audio/arlan-quote.wav',
+    services:  'assets/audio/arlan-services.wav',
+    merch:     'assets/audio/arlan-merch.wav',
+    drone:     'assets/audio/arlan-drone.wav',
+    goodbye:   'assets/audio/arlan-goodbye.wav',
+    about:     'assets/audio/arlan-about.wav',
+    portfolio: 'assets/audio/arlan-portfolio.wav'
   };
 
   // Greeting text (shown in chat bubble + used for live TTS fallback)
   const GREETINGS = {
-    welcome:   "Hey there! Welcome to Arlen! I'm your friendly guide. Need a free quote, want to explore our services, or just have a question? I'm here to help!",
+    welcome:   "Hey there! Welcome to Arlan! I'm your friendly guide. Need a free quote, want to explore our services, or just have a question? I'm here to help!",
     quote:     "Great choice! Let me take you to our quote page where Dylan can get you set up with a custom lighting plan.",
     services:  "We've got five amazing services! Holiday lighting, permanent LED systems, landscape lighting, window cleaning, and drone roof inspections. Which one catches your eye?",
-    merch:     "Check out the Arlen gear! We've got t-shirts, hoodies, hats, and polos. Looking good while supporting the team!",
+    merch:     "Check out the Arlan gear! We've got t-shirts, hoodies, hats, and polos. Looking good while supporting the team!",
     drone:     "Our drone service is awesome! We can do aerial roof inspections and even create 3D digital twins of your property. Pretty cool, right?",
     goodbye:   "Thanks for stopping by! Don't hesitate to reach out if you need anything. Brilliance in Every Detail!",
-    about:     "Dylan started Arlen with a simple vision: bring brilliance to every property. And I get to be the mascot! Best job ever.",
+    about:     "Dylan started Arlan with a simple vision: bring brilliance to every property. And I get to be the mascot! Best job ever.",
     portfolio: "Check out some of our best work! Every project is a custom design tailored to the property."
   };
 
@@ -216,7 +216,7 @@ const ArlenTTS = (() => {
 
   function toggleMute() {
     muted = !muted;
-    localStorage.setItem('arlen-tts-muted', muted);
+    localStorage.setItem('arlan-tts-muted', muted);
     if (muted) stop();
     updateMuteUI();
     return muted;
@@ -247,7 +247,7 @@ const ArlenTTS = (() => {
 })();
 
 // Expose globally
-window.ArlenTTS = ArlenTTS;
+window.ArlanTTS = ArlanTTS;
 
 // Auto-initialize with API key (fallback for non-pre-recorded phrases)
-ArlenTTS.setApiKey('AIzaSyA2njE0XVNGSz0hs6hWB9ydZ-1CH_IHX_M');
+ArlanTTS.setApiKey('AIzaSyA2njE0XVNGSz0hs6hWB9ydZ-1CH_IHX_M');

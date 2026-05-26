@@ -1,5 +1,5 @@
 /* ============================================
-   ARLEN LLC — Main Application JavaScript
+   ARLAN LLC — Main Application JavaScript
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -227,9 +227,9 @@ function initMascotWidget() {
       badge.style.display = 'none';
     }
     // Speak welcome on first open
-    if (isOpen && !hasSpokenWelcome && window.ArlenTTS) {
+    if (isOpen && !hasSpokenWelcome && window.ArlanTTS) {
       hasSpokenWelcome = true;
-      window.ArlenTTS.speak('welcome');
+      window.ArlanTTS.speak('welcome');
     }
   }
 
@@ -237,8 +237,8 @@ function initMascotWidget() {
     // If clicking voice badge, toggle mute instead
     if (e.target.closest('.mascot-widget__voice-badge')) {
       e.stopPropagation();
-      if (window.ArlenTTS) {
-        const muted = window.ArlenTTS.toggleMute();
+      if (window.ArlanTTS) {
+        const muted = window.ArlanTTS.toggleMute();
         const voiceBadge = document.getElementById('mascot-voice-badge');
         if (voiceBadge) voiceBadge.textContent = muted ? '🔇' : '🔊';
       }
@@ -252,7 +252,7 @@ function initMascotWidget() {
       e.stopPropagation();
       isOpen = false;
       panel.classList.remove('open');
-      if (window.ArlenTTS) window.ArlenTTS.stop();
+      if (window.ArlanTTS) window.ArlanTTS.stop();
     });
   }
 
@@ -261,8 +261,8 @@ function initMascotWidget() {
   actions.forEach(action => {
     action.addEventListener('click', () => {
       const key = action.dataset.speak;
-      if (key && window.ArlenTTS) {
-        window.ArlenTTS.speak(key);
+      if (key && window.ArlanTTS) {
+        window.ArlanTTS.speak(key);
       }
     });
   });
