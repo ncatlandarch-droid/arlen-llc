@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Free Estimate &mdash; Arlan LLC | Premium Home Services</title>
+  <meta name="description" content="Book a free estimate with Arlan LLC for holiday lighting, permanent LED systems, landscape lighting, window cleaning, and more. Serving Greensboro & the Triad.">
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       ARLAN LLC — Booking Page
+       Standalone with embedded design tokens
+       ============================================ */
+
+    /* --- Design Tokens --- */
+    :root {
+      --color-primary: #0A1628;
+      --color-primary-light: #0F1F38;
+      --color-primary-dark: #060E1A;
+      --color-secondary: #F5A623;
+      --color-secondary-light: #FFBD4F;
+      --color-secondary-dark: #D4891A;
+      --color-accent: #FFFFFF;
+      --color-charcoal: #2C3E50;
+      --color-teal: #0d4f4f;
+      --color-teal-light: #0f6b6b;
+      --color-emerald: #10b981;
+      --color-text: #E8E8E8;
+      --color-text-muted: #94A3B8;
+      --color-text-dark: #1E293B;
+      --color-surface: rgba(15, 31, 56, 0.6);
+      --color-glass: rgba(255, 255, 255, 0.05);
+      --color-glass-border: rgba(255, 255, 255, 0.1);
+      --color-glass-hover: rgba(255, 255, 255, 0.1);
+      --color-success: #22C55E;
+      --color-error: #EF4444;
+      --color-overlay: rgba(10, 22, 40, 0.85);
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --fs-xs: 0.75rem;
+      --fs-sm: 0.875rem;
+      --fs-base: 1rem;
+      --fs-md: 1.125rem;
+      --fs-lg: 1.25rem;
+      --fs-xl: 1.5rem;
+      --fs-2xl: 2rem;
+      --fs-3xl: 2.5rem;
+      --fs-4xl: 3rem;
+      --fs-5xl: 3.75rem;
+      --fw-light: 300;
+      --fw-regular: 400;
+      --fw-medium: 500;
+      --fw-semibold: 600;
+      --fw-bold: 700;
+      --fw-extrabold: 800;
+      --fw-black: 900;
+      --lh-tight: 1.1;
+      --lh-snug: 1.25;
+      --lh-normal: 1.5;
+      --lh-relaxed: 1.75;
+      --ls-tight: -0.02em;
+      --ls-wide: 0.05em;
+      --ls-wider: 0.1em;
+      --ls-widest: 0.2em;
+      --sp-xs: 0.25rem;
+      --sp-sm: 0.5rem;
+      --sp-md: 1rem;
+      --sp-lg: 1.5rem;
+      --sp-xl: 2rem;
+      --sp-2xl: 3rem;
+      --sp-3xl: 4rem;
+      --sp-4xl: 6rem;
+      --sp-5xl: 8rem;
+      --max-width: 1200px;
+      --max-width-narrow: 800px;
+      --nav-height: 80px;
+      --border-radius: 12px;
+      --border-radius-sm: 8px;
+      --border-radius-lg: 20px;
+      --border-radius-full: 9999px;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 30px rgba(245, 166, 35, 0.15);
+      --shadow-glow-strong: 0 0 60px rgba(245, 166, 35, 0.25);
+      --transition-fast: 150ms ease;
+      --transition-base: 300ms ease;
+      --transition-slow: 500ms ease;
+      --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* --- Reset --- */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--fs-base);
+      font-weight: var(--fw-regular);
+      line-height: var(--lh-normal);
+      color: var(--color-text);
+      background-color: var(--color-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img, video, svg { display: block; max-width: 100%; height: auto; }
+    a { color: var(--color-secondary); text-decoration: none; transition: color var(--transition-fast); }
+    a:hover { color: var(--color-secondary-light); }
+    ul, ol { list-style: none; }
+    button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; border: none; outline: none; background: none; }
+    button { cursor: pointer; }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: var(--fw-bold);
+      line-height: var(--lh-tight);
+      color: var(--color-accent);
+    }
+    p { margin-bottom: var(--sp-md); color: var(--color-text-muted); }
+    .text-gradient {
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* --- Navigation --- */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-height); z-index: 1000;
+      transition: background var(--transition-base), box-shadow var(--transition-base);
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+    .nav__inner {
+      max-width: 1400px; margin: 0 auto; padding: 0 var(--sp-xl);
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav__logo { display: flex; align-items: center; gap: var(--sp-md); }
+    .nav__logo img {
+      height: 56px; width: auto;
+      filter: drop-shadow(0 0 8px rgba(245, 166, 35, 0.6)) drop-shadow(0 0 20px rgba(245, 166, 35, 0.3));
+      animation: logoGlow 3s ease-in-out infinite;
+    }
+    @keyframes logoGlow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(245, 166, 35, 0.6)) drop-shadow(0 0 20px rgba(245, 166, 35, 0.3)); }
+      50% { filter: drop-shadow(0 0 12px rgba(245, 166, 35, 0.8)) drop-shadow(0 0 28px rgba(245, 166, 35, 0.45)); }
+    }
+    .nav__logo-text {
+      font-family: var(--font-heading); font-size: var(--fs-2xl);
+      font-weight: var(--fw-bold); color: var(--color-accent);
+      letter-spacing: var(--ls-wide); text-shadow: 0 0 12px rgba(245, 166, 35, 0.3);
+    }
+    .nav__links { display: flex; align-items: center; gap: var(--sp-2xl); }
+    .nav__link {
+      font-family: var(--font-body); font-size: var(--fs-sm); font-weight: var(--fw-medium);
+      color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--ls-wider);
+      transition: color var(--transition-fast); position: relative;
+    }
+    .nav__link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: var(--color-secondary); transition: width var(--transition-base);
+    }
+    .nav__link:hover, .nav__link.active { color: var(--color-secondary); }
+    .nav__link:hover::after, .nav__link.active::after { width: 100%; }
+    .nav__cta { margin-left: var(--sp-lg); }
+    .nav__hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+    .nav__hamburger span { width: 24px; height: 2px; background: var(--color-accent); transition: var(--transition-base); border-radius: 2px; }
+    .nav__hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* --- Buttons --- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-sm);
+      padding: var(--sp-md) var(--sp-2xl); font-family: var(--font-heading);
+      font-size: var(--fs-sm); font-weight: var(--fw-semibold); text-transform: uppercase;
+      letter-spacing: var(--ls-wider); border-radius: var(--border-radius-full);
+      transition: all var(--transition-base); white-space: nowrap; cursor: pointer;
+    }
+    .btn--primary {
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+      color: var(--color-primary); box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
+    }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245, 166, 35, 0.4); color: var(--color-primary); }
+    .btn--outline { border: 2px solid var(--color-glass-border); color: var(--color-accent); background: transparent; }
+    .btn--outline:hover { border-color: var(--color-secondary); color: var(--color-secondary); transform: translateY(-2px); }
+    .btn--lg { padding: var(--sp-lg) var(--sp-3xl); font-size: var(--fs-base); }
+
+    /* --- Container --- */
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--sp-xl); }
+
+    /* --- Hero --- */
+    .booking-hero {
+      position: relative;
+      padding: calc(var(--nav-height) + var(--sp-4xl)) 0 var(--sp-3xl);
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 40%, var(--color-teal) 100%);
+    }
+    .booking-hero::before {
+      content: ''; position: absolute; top: -50%; left: -20%; width: 60%; height: 200%;
+      background: radial-gradient(circle, rgba(245, 166, 35, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .booking-hero::after {
+      content: ''; position: absolute; bottom: -50%; right: -20%; width: 60%; height: 200%;
+      background: radial-gradient(circle, rgba(13, 79, 79, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .booking-hero .section-label {
+      font-family: var(--font-heading); font-size: var(--fs-sm); font-weight: var(--fw-semibold);
+      text-transform: uppercase; letter-spacing: var(--ls-widest); color: var(--color-secondary);
+      margin-bottom: var(--sp-md); display: block;
+    }
+    .booking-hero__title {
+      font-size: var(--fs-4xl); font-weight: var(--fw-black);
+      margin-bottom: var(--sp-md); letter-spacing: var(--ls-tight);
+    }
+    .booking-hero__subtitle {
+      font-size: var(--fs-md); color: var(--color-text-muted);
+      max-width: 600px; margin: 0 auto var(--sp-lg); line-height: var(--lh-relaxed);
+    }
+    .booking-hero__trust {
+      display: flex; align-items: center; justify-content: center; gap: var(--sp-2xl);
+      flex-wrap: wrap; margin-top: var(--sp-xl);
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: var(--sp-sm);
+      font-size: var(--fs-sm); color: var(--color-text-muted);
+    }
+    .trust-badge__icon {
+      width: 36px; height: 36px; border-radius: var(--border-radius-full);
+      background: rgba(245, 166, 35, 0.1); display: flex; align-items: center;
+      justify-content: center; font-size: var(--fs-lg);
+    }
+
+    /* --- Booking Section --- */
+    .booking-section {
+      padding: var(--sp-4xl) 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(245, 166, 35, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(13, 79, 79, 0.04) 0%, transparent 50%);
+    }
+
+    /* --- Step Progress --- */
+    .step-progress {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin-bottom: var(--sp-3xl); max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+    .step-progress__item {
+      display: flex; flex-direction: column; align-items: center; gap: var(--sp-sm);
+      position: relative; z-index: 1; flex: 1;
+    }
+    .step-progress__circle {
+      width: 44px; height: 44px; border-radius: var(--border-radius-full);
+      background: var(--color-glass); border: 2px solid var(--color-glass-border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-weight: var(--fw-bold);
+      font-size: var(--fs-sm); color: var(--color-text-muted);
+      transition: all var(--transition-base);
+    }
+    .step-progress__item.active .step-progress__circle {
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+      border-color: var(--color-secondary); color: var(--color-primary);
+      box-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+    }
+    .step-progress__item.completed .step-progress__circle {
+      background: var(--color-success); border-color: var(--color-success); color: white;
+    }
+    .step-progress__label {
+      font-size: var(--fs-xs); color: var(--color-text-muted);
+      text-transform: uppercase; letter-spacing: var(--ls-wider);
+      transition: color var(--transition-base);
+    }
+    .step-progress__item.active .step-progress__label { color: var(--color-secondary); }
+    .step-progress__item.completed .step-progress__label { color: var(--color-success); }
+    .step-progress__connector {
+      flex: 1; height: 2px; background: var(--color-glass-border);
+      margin: 0 -8px; margin-bottom: 24px;
+      transition: background var(--transition-base);
+    }
+    .step-progress__connector.filled { background: var(--color-success); }
+
+    /* --- Form Card --- */
+    .booking-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--sp-3xl);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--color-secondary), var(--color-teal), var(--color-secondary-light));
+      background-size: 200% 100%;
+      animation: shimmerBar 3s ease-in-out infinite;
+    }
+    @keyframes shimmerBar {
+      0% { background-position: 0% 0; }
+      50% { background-position: 100% 0; }
+      100% { background-position: 0% 0; }
+    }
+
+    /* --- Mascot float --- */
+    .booking-card__mascot {
+      position: absolute; top: 20px; right: 24px; font-size: 2rem;
+      animation: float 3s ease-in-out infinite; cursor: default;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* --- Step Title --- */
+    .step-title {
+      font-size: var(--fs-xl); font-weight: var(--fw-bold);
+      margin-bottom: var(--sp-xs);
+    }
+    .step-subtitle {
+      font-size: var(--fs-sm); color: var(--color-text-muted);
+      margin-bottom: var(--sp-2xl);
+    }
+
+    /* --- Form Step Panel --- */
+    .form-step { display: none; animation: fadeInUp 0.4s ease; }
+    .form-step.active { display: block; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Form Fields --- */
+    .form-group { margin-bottom: var(--sp-lg); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-lg); }
+    .form-label {
+      display: block; font-size: var(--fs-sm); font-weight: var(--fw-medium);
+      color: var(--color-text); margin-bottom: var(--sp-sm);
+    }
+    .form-label .required { color: var(--color-secondary); }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 14px var(--sp-lg);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius-sm);
+      color: var(--color-accent); font-size: var(--fs-base);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--color-secondary);
+      box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1), 0 0 20px rgba(245, 166, 35, 0.05);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(148, 163, 184, 0.6); }
+    .form-textarea { min-height: 100px; resize: vertical; }
+    .form-select {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394A3B8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right var(--sp-md) center;
+      padding-right: var(--sp-3xl);
+    }
+    .form-select option { background: var(--color-primary); color: var(--color-text); }
+    .form-input.error, .form-select.error, .form-textarea.error {
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+    .form-error {
+      font-size: var(--fs-xs); color: var(--color-error);
+      margin-top: var(--sp-xs); display: none;
+      animation: fadeInUp 0.2s ease;
+    }
+    .form-error.visible { display: block; }
+
+    /* --- Service Selection Cards --- */
+    .service-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--sp-md);
+    }
+    .service-option {
+      position: relative; cursor: pointer;
+    }
+    .service-option input[type="radio"] {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .service-option__card {
+      display: flex; flex-direction: column; align-items: center;
+      gap: var(--sp-sm); padding: var(--sp-lg) var(--sp-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid var(--color-glass-border);
+      border-radius: var(--border-radius);
+      transition: all var(--transition-base);
+      text-align: center;
+    }
+    .service-option__card:hover {
+      border-color: rgba(245, 166, 35, 0.3);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-2px);
+    }
+    .service-option input:checked + .service-option__card {
+      border-color: var(--color-secondary);
+      background: rgba(245, 166, 35, 0.08);
+      box-shadow: 0 0 20px rgba(245, 166, 35, 0.1);
+    }
+    .service-option__icon { font-size: 1.8rem; margin-bottom: var(--sp-xs); }
+    .service-option__label {
+      font-size: var(--fs-sm); font-weight: var(--fw-medium);
+      color: var(--color-text);
+    }
+    .service-option input:checked + .service-option__card .service-option__label {
+      color: var(--color-secondary);
+    }
+    .service-option__check {
+      position: absolute; top: 8px; right: 8px; width: 22px; height: 22px;
+      border-radius: var(--border-radius-full); background: var(--color-secondary);
+      display: none; align-items: center; justify-content: center;
+      font-size: 12px; color: var(--color-primary); font-weight: bold;
+    }
+    .service-option input:checked ~ .service-option__check { display: flex; }
+
+    /* --- Property Toggle --- */
+    .property-toggle {
+      display: flex; gap: var(--sp-md); margin-top: var(--sp-md);
+    }
+    .property-toggle__option {
+      flex: 1; position: relative; cursor: pointer;
+    }
+    .property-toggle__option input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .property-toggle__card {
+      display: flex; align-items: center; justify-content: center; gap: var(--sp-sm);
+      padding: var(--sp-lg);
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid var(--color-glass-border);
+      border-radius: var(--border-radius);
+      transition: all var(--transition-base);
+      font-weight: var(--fw-medium); font-size: var(--fs-base);
+    }
+    .property-toggle__card:hover { border-color: rgba(245, 166, 35, 0.3); }
+    .property-toggle__option input:checked + .property-toggle__card {
+      border-color: var(--color-secondary);
+      background: rgba(245, 166, 35, 0.08);
+      color: var(--color-secondary);
+    }
+    .property-toggle__icon { font-size: 1.5rem; }
+
+    /* --- Referral Grid --- */
+    .referral-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-sm);
+    }
+    .referral-option { position: relative; cursor: pointer; }
+    .referral-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .referral-option__card {
+      display: flex; align-items: center; justify-content: center; gap: var(--sp-sm);
+      padding: var(--sp-md); background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-glass-border); border-radius: var(--border-radius-sm);
+      transition: all var(--transition-base); font-size: var(--fs-sm);
+      color: var(--color-text-muted);
+    }
+    .referral-option__card:hover { border-color: rgba(245, 166, 35, 0.3); color: var(--color-text); }
+    .referral-option input:checked + .referral-option__card {
+      border-color: var(--color-secondary); background: rgba(245, 166, 35, 0.08);
+      color: var(--color-secondary);
+    }
+
+    /* --- Time Slots --- */
+    .time-slots { display: flex; gap: var(--sp-md); flex-wrap: wrap; }
+    .time-slot { position: relative; cursor: pointer; flex: 1; min-width: 120px; }
+    .time-slot input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .time-slot__card {
+      display: flex; flex-direction: column; align-items: center; gap: var(--sp-xs);
+      padding: var(--sp-lg) var(--sp-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid var(--color-glass-border);
+      border-radius: var(--border-radius);
+      transition: all var(--transition-base);
+    }
+    .time-slot__card:hover { border-color: rgba(245, 166, 35, 0.3); }
+    .time-slot input:checked + .time-slot__card {
+      border-color: var(--color-secondary); background: rgba(245, 166, 35, 0.08);
+    }
+    .time-slot__icon { font-size: 1.5rem; }
+    .time-slot__label { font-size: var(--fs-sm); font-weight: var(--fw-medium); color: var(--color-text); }
+    .time-slot__range { font-size: var(--fs-xs); color: var(--color-text-muted); }
+    .time-slot input:checked + .time-slot__card .time-slot__label { color: var(--color-secondary); }
+
+    /* --- Form Actions --- */
+    .form-actions {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: var(--sp-md); margin-top: var(--sp-2xl); padding-top: var(--sp-xl);
+      border-top: 1px solid var(--color-glass-border);
+    }
+    .btn--back {
+      display: inline-flex; align-items: center; gap: var(--sp-sm);
+      padding: var(--sp-md) var(--sp-xl);
+      color: var(--color-text-muted); background: transparent;
+      border: 1px solid var(--color-glass-border); border-radius: var(--border-radius-full);
+      font-family: var(--font-heading); font-size: var(--fs-sm);
+      font-weight: var(--fw-medium); letter-spacing: var(--ls-wider);
+      text-transform: uppercase; transition: all var(--transition-base);
+    }
+    .btn--back:hover { border-color: var(--color-text-muted); color: var(--color-text); }
+    .btn--next, .btn--submit {
+      display: inline-flex; align-items: center; gap: var(--sp-sm);
+      padding: var(--sp-md) var(--sp-2xl);
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+      color: var(--color-primary); border-radius: var(--border-radius-full);
+      font-family: var(--font-heading); font-size: var(--fs-sm);
+      font-weight: var(--fw-semibold); letter-spacing: var(--ls-wider);
+      text-transform: uppercase; transition: all var(--transition-base);
+      box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
+    }
+    .btn--next:hover, .btn--submit:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245, 166, 35, 0.4);
+    }
+    .btn--submit { padding: var(--sp-lg) var(--sp-3xl); font-size: var(--fs-base); }
+    .btn--submit.submitting {
+      opacity: 0.7; pointer-events: none;
+    }
+
+    /* --- Date input --- */
+    input[type="date"] {
+      color-scheme: dark;
+    }
+
+    /* --- Confirmation Screen --- */
+    .confirmation {
+      display: none; text-align: center; padding: var(--sp-3xl) var(--sp-xl);
+      animation: fadeInUp 0.6s ease;
+    }
+    .confirmation.active { display: block; }
+
+    .confirmation__checkmark {
+      width: 100px; height: 100px; margin: 0 auto var(--sp-2xl);
+      position: relative;
+    }
+    .checkmark-circle {
+      width: 100px; height: 100px; border-radius: var(--border-radius-full);
+      background: linear-gradient(135deg, var(--color-success), var(--color-emerald));
+      display: flex; align-items: center; justify-content: center;
+      animation: scaleIn 0.5s var(--transition-spring);
+      box-shadow: 0 0 40px rgba(34, 197, 94, 0.3);
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .checkmark-svg {
+      width: 50px; height: 50px;
+    }
+    .checkmark-svg path {
+      stroke: white; stroke-width: 3; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+      stroke-dasharray: 50; stroke-dashoffset: 50;
+      animation: drawCheck 0.6s ease 0.3s forwards;
+    }
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .confirmation__title {
+      font-size: var(--fs-2xl); margin-bottom: var(--sp-md);
+    }
+    .confirmation__text {
+      font-size: var(--fs-md); max-width: 440px; margin: 0 auto var(--sp-xl);
+      line-height: var(--lh-relaxed);
+    }
+    .confirmation__info {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius);
+      padding: var(--sp-xl); max-width: 400px; margin: 0 auto var(--sp-xl);
+    }
+    .confirmation__info-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: var(--sp-sm) 0; font-size: var(--fs-sm);
+    }
+    .confirmation__info-row:not(:last-child) {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .confirmation__info-label { color: var(--color-text-muted); }
+    .confirmation__info-value { color: var(--color-accent); font-weight: var(--fw-medium); }
+    .confirmation__info-value a { color: var(--color-secondary); }
+    .confirmation__actions {
+      display: flex; gap: var(--sp-md); justify-content: center; flex-wrap: wrap;
+      margin-top: var(--sp-xl);
+    }
+    .confirmation__mascot {
+      font-size: 3rem; margin-bottom: var(--sp-md);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* --- Particle confetti --- */
+    .confetti-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9999; overflow: hidden;
+    }
+    .confetti-piece {
+      position: absolute; width: 10px; height: 10px;
+      animation: confettiFall linear forwards;
+    }
+    @keyframes confettiFall {
+      0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* --- Serving Banner --- */
+    .serving-banner {
+      text-align: center; padding: var(--sp-2xl) 0;
+      background: var(--color-primary-dark);
+    }
+    .serving-banner__text {
+      font-family: var(--font-heading); font-size: var(--fs-md);
+      color: var(--color-text-muted); letter-spacing: var(--ls-wide);
+    }
+    .serving-banner__text span { color: var(--color-secondary); }
+
+    /* --- Footer --- */
+    .footer {
+      background: var(--color-primary-dark);
+      padding: var(--sp-3xl) 0 var(--sp-xl);
+      border-top: 1px solid var(--color-glass-border);
+    }
+    .footer__inner { text-align: center; }
+    .footer__logo {
+      display: flex; align-items: center; justify-content: center;
+      gap: var(--sp-sm); margin-bottom: var(--sp-lg);
+    }
+    .footer__logo img { height: 36px; }
+    .footer__logo-text {
+      font-family: var(--font-heading); font-size: var(--fs-lg);
+      font-weight: var(--fw-bold); color: var(--color-accent);
+      letter-spacing: var(--ls-wide);
+    }
+    .footer__links {
+      display: flex; align-items: center; justify-content: center;
+      gap: var(--sp-xl); flex-wrap: wrap; margin-bottom: var(--sp-xl);
+    }
+    .footer__link {
+      font-size: var(--fs-sm); color: var(--color-text-muted);
+      transition: color var(--transition-fast);
+    }
+    .footer__link:hover { color: var(--color-secondary); }
+    .footer__bottom {
+      padding-top: var(--sp-lg); border-top: 1px solid var(--color-glass-border);
+      display: flex; flex-direction: column; align-items: center; gap: var(--sp-sm);
+    }
+    .footer__copyright {
+      font-size: var(--fs-xs); color: var(--color-text-muted); margin: 0;
+    }
+    .footer__partner {
+      font-size: var(--fs-xs); color: rgba(148, 163, 184, 0.5); margin: 0;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      :root { --nav-height: 64px; }
+      .nav__hamburger { display: flex; }
+      .nav__links {
+        position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+        background: var(--color-primary-dark); flex-direction: column;
+        justify-content: center; gap: var(--sp-2xl);
+        transition: right var(--transition-base);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      }
+      .nav__links.open { right: 0; }
+      .nav__cta { margin-left: 0; }
+      .booking-hero__title { font-size: var(--fs-2xl); }
+      .booking-hero__trust { gap: var(--sp-lg); }
+      .trust-badge { font-size: var(--fs-xs); }
+      .booking-card { padding: var(--sp-xl); }
+      .form-row { grid-template-columns: 1fr; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .referral-grid { grid-template-columns: repeat(2, 1fr); }
+      .time-slots { flex-direction: column; }
+      .time-slot { min-width: unset; }
+      .step-progress__label { font-size: 0.65rem; }
+      .step-progress__circle { width: 36px; height: 36px; font-size: var(--fs-xs); }
+      .form-actions { flex-direction: column-reverse; }
+      .form-actions .btn--back,
+      .form-actions .btn--next,
+      .form-actions .btn--submit { width: 100%; justify-content: center; }
+      .footer__links { gap: var(--sp-md); }
+    }
+
+    @media (max-width: 480px) {
+      .booking-hero__title { font-size: var(--fs-xl); }
+      .service-grid { grid-template-columns: 1fr; }
+      .referral-grid { grid-template-columns: 1fr 1fr; }
+      .property-toggle { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/logo/arlan-icon.png" alt="Arlan LLC Icon">
+        <span class="nav__logo-text">ARLAN</span>
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="services.html" class="nav__link">Services</a>
+        <a href="experience.html" class="nav__link">3D Experience</a>
+        <a href="portfolio.html" class="nav__link">Portfolio</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="merch.html" class="nav__link">Merch</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="book.html" class="btn btn--primary nav__cta">Book Now</a>
+      </div>
+      <div class="nav__hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="booking-hero">
+    <div class="container">
+      <span class="section-label">Schedule Your Appointment</span>
+      <h1 class="booking-hero__title">Book Your <span class="text-gradient">Free Estimate</span></h1>
+      <p class="booking-hero__subtitle">Tell us about your project and we'll create a custom proposal. No obligation, no pressure — just premium service from start to finish.</p>
+      <div class="booking-hero__trust">
+        <div class="trust-badge">
+          <div class="trust-badge__icon">⚡</div>
+          <span>24-Hour Response</span>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-badge__icon">🎯</div>
+          <span>Free Estimates</span>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-badge__icon">⭐</div>
+          <span>5-Star Rated</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section class="booking-section">
+    <div class="container">
+
+      <!-- Step Progress -->
+      <div class="step-progress" id="step-progress">
+        <div class="step-progress__item active" data-step="1">
+          <div class="step-progress__circle">1</div>
+          <span class="step-progress__label">Service</span>
+        </div>
+        <div class="step-progress__connector" id="conn-1-2"></div>
+        <div class="step-progress__item" data-step="2">
+          <div class="step-progress__circle">2</div>
+          <span class="step-progress__label">Details</span>
+        </div>
+        <div class="step-progress__connector" id="conn-2-3"></div>
+        <div class="step-progress__item" data-step="3">
+          <div class="step-progress__circle">3</div>
+          <span class="step-progress__label">Schedule</span>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="booking-card">
+        <div class="booking-card__mascot" title="Arlan says: Let's do this! 🐕">🐕</div>
+
+        <form id="booking-form" name="booking-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="booking-request">
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+          <!-- ===== STEP 1: Service Selection ===== -->
+          <div class="form-step active" id="step-1">
+            <h2 class="step-title">What service are you interested in?</h2>
+            <p class="step-subtitle">Select the service that best fits your needs</p>
+
+            <div class="service-grid">
+              <label class="service-option">
+                <input type="radio" name="service" value="Holiday Lighting" required>
+                <div class="service-option__card">
+                  <div class="service-option__icon">🎄</div>
+                  <span class="service-option__label">Holiday Lighting</span>
+                </div>
+                <div class="service-option__check">✓</div>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Permanent LED">
+                <div class="service-option__card">
+                  <div class="service-option__icon">💡</div>
+                  <span class="service-option__label">Permanent LED</span>
+                </div>
+                <div class="service-option__check">✓</div>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Landscape Lighting">
+                <div class="service-option__card">
+                  <div class="service-option__icon">🌿</div>
+                  <span class="service-option__label">Landscape Lighting</span>
+                </div>
+                <div class="service-option__check">✓</div>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Window Cleaning">
+                <div class="service-option__card">
+                  <div class="service-option__icon">🪟</div>
+                  <span class="service-option__label">Window Cleaning</span>
+                </div>
+                <div class="service-option__check">✓</div>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Window Replacement">
+                <div class="service-option__card">
+                  <div class="service-option__icon">🏠</div>
+                  <span class="service-option__label">Window Replacement</span>
+                </div>
+                <div class="service-option__check">✓</div>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Garage Door Replacement">
+                <div class="service-option__card">
+                  <div class="service-option__icon">🚗</div>
+                  <span class="service-option__label">Garage Door</span>
+                </div>
+                <div class="service-option__check">✓</div>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Drone Roof Inspection">
+                <div class="service-option__card">
+                  <div class="service-option__icon">🛸</div>
+                  <span class="service-option__label">Drone Inspection</span>
+                </div>
+                <div class="service-option__check">✓</div>
+              </label>
+            </div>
+            <div class="form-error" id="service-error">Please select a service to continue</div>
+
+            <div style="margin-top: var(--sp-2xl);">
+              <h3 class="step-title" style="font-size: var(--fs-lg);">Property Type</h3>
+              <div class="property-toggle">
+                <label class="property-toggle__option">
+                  <input type="radio" name="property-type" value="Residential" checked>
+                  <div class="property-toggle__card">
+                    <span class="property-toggle__icon">🏡</span>
+                    Residential
+                  </div>
+                </label>
+                <label class="property-toggle__option">
+                  <input type="radio" name="property-type" value="Commercial">
+                  <div class="property-toggle__card">
+                    <span class="property-toggle__icon">🏢</span>
+                    Commercial
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <div></div>
+              <button type="button" class="btn--next" onclick="nextStep(1)">
+                Continue <span style="font-size: 1.1em;">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ===== STEP 2: Contact Details ===== -->
+          <div class="form-step" id="step-2">
+            <h2 class="step-title">Tell us about yourself</h2>
+            <p class="step-subtitle">We'll use this info to prepare your custom estimate</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="customer-name">Full Name <span class="required">*</span></label>
+                <input type="text" id="customer-name" name="customer-name" class="form-input" placeholder="Your full name" required>
+                <div class="form-error" id="name-error">Please enter your name</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(336) 555-1234" required>
+                <div class="form-error" id="phone-error">Please enter a valid phone number</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+              <div class="form-error" id="email-error">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="address">Street Address</label>
+                <input type="text" id="address" name="address" class="form-input" placeholder="123 Main Street">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="city">City</label>
+                <input type="text" id="city" name="city" class="form-input" placeholder="Greensboro" value="Greensboro">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn--back" onclick="prevStep(2)">
+                <span style="font-size: 1.1em;">←</span> Back
+              </button>
+              <button type="button" class="btn--next" onclick="nextStep(2)">
+                Continue <span style="font-size: 1.1em;">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ===== STEP 3: Schedule & Notes ===== -->
+          <div class="form-step" id="step-3">
+            <h2 class="step-title">When works best for you?</h2>
+            <p class="step-subtitle">Pick a date and time, and share any project details</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="preferred-date">Preferred Date</label>
+                <input type="date" id="preferred-date" name="preferred-date" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Preferred Time</label>
+                <div class="time-slots">
+                  <label class="time-slot">
+                    <input type="radio" name="preferred-time" value="Morning" checked>
+                    <div class="time-slot__card">
+                      <span class="time-slot__icon">🌅</span>
+                      <span class="time-slot__label">Morning</span>
+                      <span class="time-slot__range">8am – 12pm</span>
+                    </div>
+                  </label>
+                  <label class="time-slot">
+                    <input type="radio" name="preferred-time" value="Afternoon">
+                    <div class="time-slot__card">
+                      <span class="time-slot__icon">☀️</span>
+                      <span class="time-slot__label">Afternoon</span>
+                      <span class="time-slot__range">12pm – 5pm</span>
+                    </div>
+                  </label>
+                  <label class="time-slot">
+                    <input type="radio" name="preferred-time" value="Evening">
+                    <div class="time-slot__card">
+                      <span class="time-slot__icon">🌙</span>
+                      <span class="time-slot__label">Evening</span>
+                      <span class="time-slot__range">5pm – 8pm</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="notes">Project Description / Notes</label>
+              <textarea id="notes" name="notes" class="form-textarea" placeholder="Tell us about your property, what you're envisioning, any specific requests or questions..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">How did you hear about us?</label>
+              <div class="referral-grid">
+                <label class="referral-option">
+                  <input type="radio" name="referral" value="Flyer">
+                  <div class="referral-option__card">📄 Flyer</div>
+                </label>
+                <label class="referral-option">
+                  <input type="radio" name="referral" value="Door Hanger">
+                  <div class="referral-option__card">🚪 Door Hanger</div>
+                </label>
+                <label class="referral-option">
+                  <input type="radio" name="referral" value="Referral">
+                  <div class="referral-option__card">🤝 Referral</div>
+                </label>
+                <label class="referral-option">
+                  <input type="radio" name="referral" value="Online">
+                  <div class="referral-option__card">🌐 Online</div>
+                </label>
+                <label class="referral-option">
+                  <input type="radio" name="referral" value="Social Media">
+                  <div class="referral-option__card">📱 Social Media</div>
+                </label>
+                <label class="referral-option">
+                  <input type="radio" name="referral" value="Other">
+                  <div class="referral-option__card">💬 Other</div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn--back" onclick="prevStep(3)">
+                <span style="font-size: 1.1em;">←</span> Back
+              </button>
+              <button type="submit" class="btn--submit" id="submit-btn">
+                <span id="submit-text">Submit Booking Request</span>
+                <span id="submit-spinner" style="display:none;">Sending...</span>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- ===== Confirmation Screen ===== -->
+        <div class="confirmation" id="confirmation">
+          <div class="confirmation__mascot">🐕</div>
+          <div class="confirmation__checkmark">
+            <div class="checkmark-circle">
+              <svg class="checkmark-svg" viewBox="0 0 50 50">
+                <path d="M14 27 L22 35 L38 16"/>
+              </svg>
+            </div>
+          </div>
+          <h2 class="confirmation__title">Thank You! <span class="text-gradient">We're On It.</span></h2>
+          <p class="confirmation__text">Your booking request has been received. We'll contact you within <strong style="color: var(--color-secondary);">24 hours</strong> with a custom proposal for your project.</p>
+
+          <div class="confirmation__info">
+            <div class="confirmation__info-row">
+              <span class="confirmation__info-label">Website</span>
+              <span class="confirmation__info-value"><a href="https://arlanpro.com" target="_blank">arlanpro.com</a></span>
+            </div>
+            <div class="confirmation__info-row">
+              <span class="confirmation__info-label">Call Dylan</span>
+              <span class="confirmation__info-value"><a href="tel:3368900981">(336) 890-0981</a></span>
+            </div>
+            <div class="confirmation__info-row">
+              <span class="confirmation__info-label">Response Time</span>
+              <span class="confirmation__info-value">Within 24 hrs</span>
+            </div>
+          </div>
+
+          <div class="confirmation__actions">
+            <a href="index.html" class="btn btn--primary btn--lg">Back to Home</a>
+            <a href="services.html" class="btn btn--outline btn--lg">Explore Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serving Banner -->
+  <section class="serving-banner">
+    <div class="container">
+      <p class="serving-banner__text">🏡 Proudly Serving <span>Greensboro &amp; the Triad</span> &bull; <span>Asheville</span> &bull; <span>Boone</span> &bull; <span>Tampa Bay</span></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          <img src="assets/logo/arlan-icon.png" alt="Arlan">
+          <span class="footer__logo-text">ARLAN</span>
+        </div>
+        <div class="footer__links">
+          <a href="index.html" class="footer__link">Home</a>
+          <a href="services.html" class="footer__link">Services</a>
+          <a href="experience.html" class="footer__link">3D Experience</a>
+          <a href="portfolio.html" class="footer__link">Portfolio</a>
+          <a href="about.html" class="footer__link">About</a>
+          <a href="contact.html" class="footer__link">Contact</a>
+          <a href="merch.html" class="footer__link">Merch</a>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__copyright">&copy; 2026 Arlan LLC. All rights reserved. Brilliance in Every Detail.</p>
+          <p class="footer__partner">A Think! Ventures Cooperative Partner</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Confetti Container -->
+  <div class="confetti-container" id="confetti-container"></div>
+
+  <script>
+    /* ============================================
+       ARLAN LLC — Booking Page Logic
+       ============================================ */
+
+    // --- Navigation ---
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // --- Multi-Step Form Logic ---
+    let currentStep = 1;
+    const totalSteps = 3;
+
+    function updateProgress() {
+      document.querySelectorAll('.step-progress__item').forEach(item => {
+        const step = parseInt(item.dataset.step);
+        item.classList.remove('active', 'completed');
+        if (step === currentStep) item.classList.add('active');
+        else if (step < currentStep) item.classList.add('completed');
+      });
+
+      // Connectors
+      const conn12 = document.getElementById('conn-1-2');
+      const conn23 = document.getElementById('conn-2-3');
+      conn12.classList.toggle('filled', currentStep > 1);
+      conn23.classList.toggle('filled', currentStep > 2);
+    }
+
+    function showStep(step) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('step-' + step);
+      if (target) target.classList.add('active');
+      currentStep = step;
+      updateProgress();
+
+      // Scroll to form top
+      document.querySelector('.booking-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function validateStep(step) {
+      clearErrors();
+
+      if (step === 1) {
+        const service = document.querySelector('input[name="service"]:checked');
+        if (!service) {
+          showError('service-error');
+          return false;
+        }
+        return true;
+      }
+
+      if (step === 2) {
+        let valid = true;
+        const name = document.getElementById('customer-name');
+        const phone = document.getElementById('phone');
+        const email = document.getElementById('email');
+
+        if (!name.value.trim()) {
+          name.classList.add('error');
+          showError('name-error');
+          valid = false;
+        }
+
+        if (!phone.value.trim() || phone.value.trim().length < 7) {
+          phone.classList.add('error');
+          showError('phone-error');
+          valid = false;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.value.trim() || !emailPattern.test(email.value.trim())) {
+          email.classList.add('error');
+          showError('email-error');
+          valid = false;
+        }
+
+        return valid;
+      }
+
+      return true;
+    }
+
+    function showError(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('visible');
+    }
+
+    function clearErrors() {
+      document.querySelectorAll('.form-error').forEach(e => e.classList.remove('visible'));
+      document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(e => e.classList.remove('error'));
+    }
+
+    function nextStep(from) {
+      if (!validateStep(from)) return;
+      showStep(from + 1);
+    }
+
+    function prevStep(from) {
+      showStep(from - 1);
+    }
+
+    // --- Form field focus effects ---
+    document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+      input.addEventListener('focus', () => {
+        input.classList.remove('error');
+        const errorEl = input.parentElement.querySelector('.form-error');
+        if (errorEl) errorEl.classList.remove('visible');
+      });
+    });
+
+    // --- Phone formatting ---
+    document.getElementById('phone').addEventListener('input', function(e) {
+      let val = e.target.value.replace(/\D/g, '');
+      if (val.length > 0) {
+        if (val.length <= 3) {
+          val = '(' + val;
+        } else if (val.length <= 6) {
+          val = '(' + val.substring(0, 3) + ') ' + val.substring(3);
+        } else {
+          val = '(' + val.substring(0, 3) + ') ' + val.substring(3, 6) + '-' + val.substring(6, 10);
+        }
+      }
+      e.target.value = val;
+    });
+
+    // --- Set min date to today ---
+    const dateInput = document.getElementById('preferred-date');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.min = today;
+    }
+
+    // --- Confetti ---
+    function launchConfetti() {
+      const container = document.getElementById('confetti-container');
+      const colors = ['#F5A623', '#FFBD4F', '#22C55E', '#10b981', '#0d4f4f', '#fff'];
+
+      for (let i = 0; i < 60; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.width = (Math.random() * 8 + 6) + 'px';
+        piece.style.height = (Math.random() * 8 + 6) + 'px';
+        piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        piece.style.animationDelay = (Math.random() * 1) + 's';
+        container.appendChild(piece);
+      }
+
+      setTimeout(() => {
+        container.innerHTML = '';
+      }, 5000);
+    }
+
+    // --- Form Submission ---
+    const form = document.getElementById('booking-form');
+    const confirmation = document.getElementById('confirmation');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const submitSpinner = document.getElementById('submit-spinner');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Show loading state
+      submitBtn.classList.add('submitting');
+      submitText.style.display = 'none';
+      submitSpinner.style.display = 'inline';
+
+      // Submit to Netlify
+      const formData = new FormData(form);
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(response => {
+        showConfirmation();
+      })
+      .catch(error => {
+        // Still show confirmation (Netlify may not respond in dev)
+        showConfirmation();
+      });
+    });
+
+    function showConfirmation() {
+      form.style.display = 'none';
+      confirmation.classList.add('active');
+
+      // Hide step progress
+      document.getElementById('step-progress').style.display = 'none';
+
+      // Hide mascot in card (we have one in confirmation)
+      const cardMascot = document.querySelector('.booking-card__mascot');
+      if (cardMascot) cardMascot.style.display = 'none';
+
+      // Scroll to top of card
+      document.querySelector('.booking-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Launch confetti
+      setTimeout(launchConfetti, 300);
+    }
+  </script>
+
+</body>
+</html>

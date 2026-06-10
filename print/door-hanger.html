@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arlan LLC — Door Hanger (Print Ready)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #e8e8e8;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { font-family: 'Outfit', sans-serif; text-align: center; margin-bottom: 5px; color: #1a2a3a; }
+  .instructions { text-align: center; color: #666; margin-bottom: 30px; font-size: 13px; max-width: 600px; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    h1, .instructions { display: none !important; }
+    .hanger-wrapper { box-shadow: none !important; margin: 0 !important; }
+  }
+
+  .hanger-wrapper {
+    width: 4.25in;
+    height: 11in;
+    background: white;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* ─── DOOR HOLE ─── */
+  .door-hole {
+    width: 1.3in;
+    height: 1.3in;
+    border: 3px dashed #ccc;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.3in;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #bbb;
+    text-align: center;
+  }
+
+  /* ─── TOP SECTION (TEAL HEADER) ─── */
+  .header-section {
+    background: linear-gradient(135deg, #0d4f4f 0%, #0a3a3a 70%, #061f1f 100%);
+    padding: 1.8in 0.3in 0.35in;
+    text-align: center;
+    position: relative;
+  }
+
+  .header-section::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(135deg, #0d4f4f, #0a3a3a);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+
+  .brand-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #f5a623;
+    letter-spacing: 6px;
+    margin-bottom: 2px;
+  }
+
+  .tagline {
+    font-size: 10px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .mascot-badge {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(245,166,35,0.2);
+    border: 2px solid #f5a623;
+    margin: 10px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  .main-content {
+    padding: 0.45in 0.3in 0.2in;
+  }
+
+  .headline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0d4f4f;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .headline span {
+    color: #f5a623;
+  }
+
+  .subheadline {
+    font-size: 10px;
+    color: #4a5a6a;
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  /* ─── SERVICES LIST ─── */
+  .services-section {
+    padding: 0 0.3in;
+  }
+
+  .services-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f5a623;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .service-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #0d4f4f;
+  }
+
+  .service-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .service-text {
+    font-size: 8.5px;
+    font-weight: 600;
+    color: #1a2a3a;
+    line-height: 1.2;
+  }
+
+  /* ─── OFFER BOX ─── */
+  .offer-section {
+    margin: 16px 0.3in 0;
+    background: linear-gradient(135deg, #0d4f4f, #0a3a3a);
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    background: rgba(245,166,35,0.15);
+    border-radius: 50%;
+  }
+
+  .offer-badge {
+    display: inline-block;
+    background: #f5a623;
+    color: #0d4f4f;
+    font-family: 'Outfit', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .offer-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .offer-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ─── CONTACT FOOTER ─── */
+  .contact-footer {
+    margin: 14px 0.3in 0;
+    text-align: center;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #1a2a3a;
+    font-weight: 600;
+  }
+
+  .contact-icon {
+    font-size: 12px;
+  }
+
+  .website-big {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0d4f4f;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .website-big span { color: #f5a623; }
+
+  /* ─── BOTTOM BAR ─── */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f5a623;
+    padding: 6px;
+    text-align: center;
+  }
+
+  .bottom-bar-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    color: #0d4f4f;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .ventures-tag {
+    font-size: 7px;
+    color: rgba(13,79,79,0.6);
+    margin-top: 1px;
+  }
+
+  /* ─── TEAR-OFF TABS ─── */
+  .tear-offs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 10px 0.15in 0;
+  }
+
+  .tear-tab {
+    width: 0.75in;
+    border: 1px dashed #ccc;
+    padding: 4px 2px;
+    text-align: center;
+    transform: rotate(0deg);
+  }
+
+  .tear-tab .tab-brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 7px;
+    font-weight: 800;
+    color: #0d4f4f;
+    letter-spacing: 1px;
+  }
+
+  .tear-tab .tab-phone {
+    font-size: 6.5px;
+    color: #1a2a3a;
+    font-weight: 600;
+  }
+
+  .tear-tab .tab-url {
+    font-size: 5.5px;
+    color: #f5a623;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<h1>Arlan LLC — Door Hanger</h1>
+<p class="instructions">Print on cardstock, cut to 4.25" x 11". Punch/cut the circle at top for doorknob.<br>
+<strong>Note:</strong> Update Dylan's phone number and email before printing!</p>
+
+<div class="hanger-wrapper">
+  <div class="door-hole">Cut hole<br>for knob</div>
+
+  <div class="header-section">
+    <div class="brand-name">ARLAN</div>
+    <div class="tagline">Brilliance in Every Detail</div>
+    <div class="mascot-badge">🐕</div>
+  </div>
+
+  <div class="main-content">
+    <div class="headline">Your Home Deserves<br><span>Brilliance</span></div>
+    <div class="subheadline">
+      We're your neighbors — and we'd love to help your home<br>
+      shine inside and out. Premium services, honest prices.
+    </div>
+  </div>
+
+  <div class="services-section">
+    <div class="services-title">What We Do</div>
+    <div class="services-grid">
+      <div class="service-item">
+        <span class="service-icon">✨</span>
+        <span class="service-text">Holiday Lighting<br>Design & Install</span>
+      </div>
+      <div class="service-item">
+        <span class="service-icon">💡</span>
+        <span class="service-text">Permanent LED<br>Roofline Systems</span>
+      </div>
+      <div class="service-item">
+        <span class="service-icon">🌿</span>
+        <span class="service-text">Landscape<br>Lighting</span>
+      </div>
+      <div class="service-item">
+        <span class="service-icon">🪟</span>
+        <span class="service-text">Window Cleaning<br>& Replacement</span>
+      </div>
+      <div class="service-item">
+        <span class="service-icon">🚪</span>
+        <span class="service-text">Garage Door<br>Replacement</span>
+      </div>
+      <div class="service-item">
+        <span class="service-icon">🛩️</span>
+        <span class="service-text">Drone Roof<br>Inspections</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="offer-section">
+    <div class="offer-badge">Limited Time</div>
+    <div class="offer-text">FREE Estimate</div>
+    <div class="offer-sub">No obligation. No pressure. Just honest pricing.</div>
+  </div>
+
+  <div class="contact-footer">
+    <div class="website-big">arlan<span>pro</span>.com</div>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        (336) 890-0981
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📧</span>
+        dylan@arlanpro.com
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bottom-bar-text">Serving Greensboro & the Triad</div>
+    <div class="ventures-tag">A Think! Ventures Cooperative Partner</div>
+  </div>
+</div>
+
+</body>
+</html>

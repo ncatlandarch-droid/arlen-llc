@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arlan LLC — Business Cards (Print Ready)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f0f0;
+    padding: 20px;
+  }
+
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #1a2a3a;
+  }
+  .instructions {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    h1, .instructions, .page-break-label { display: none !important; }
+    .card-sheet { box-shadow: none !important; margin: 0 !important; padding: 0 !important; }
+    .card { border: 0.5px dashed #ccc !important; }
+  }
+
+  .card-sheet {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto 40px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    padding: 0.5in 0.25in;
+    page-break-after: always;
+  }
+
+  .page-break-label {
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d4f4f;
+    margin: 10px 0 20px;
+    width: 100%;
+  }
+
+  /* Standard business card: 3.5in x 2in */
+  .card {
+    width: 3.5in;
+    height: 2in;
+    border: 1px dashed #ddd;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* ─── FRONT CARD ─── */
+  .card-front {
+    background: linear-gradient(135deg, #0d4f4f 0%, #0a3a3a 60%, #061f1f 100%);
+    color: white;
+    padding: 0.15in 0.2in;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-front .top-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-front .mascot-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(245, 166, 35, 0.2);
+    border: 2px solid #f5a623;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .card-front .brand-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #f5a623;
+  }
+
+  .card-front .tagline {
+    font-size: 7px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: -2px;
+    margin-left: 46px;
+  }
+
+  .card-front .services-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .card-front .service-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(245, 166, 35, 0.3);
+    border-radius: 10px;
+    padding: 2px 7px;
+    font-size: 6.5px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.3px;
+  }
+
+  .card-front .contact-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .card-front .contact-info {
+    font-size: 7.5px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .card-front .contact-info strong {
+    color: white;
+    font-size: 9px;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .card-front .website-box {
+    background: #f5a623;
+    color: #0d4f4f;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  .card-front .gold-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f5a623, #e8941a, #f5a623);
+  }
+
+  /* ─── BACK CARD ─── */
+  .card-back {
+    background: white;
+    padding: 0.15in 0.2in;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid #0d4f4f;
+  }
+
+  .card-back .back-header {
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 1.5px solid #f5a623;
+  }
+
+  .card-back .back-brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #0d4f4f;
+    letter-spacing: 2px;
+  }
+
+  .card-back .back-tagline {
+    font-size: 6.5px;
+    color: #4a5a6a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .card-back .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 10px;
+    margin: 5px 0;
+  }
+
+  .card-back .svc-item {
+    font-size: 7px;
+    color: #1a2a3a;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .card-back .svc-dot {
+    width: 4px;
+    height: 4px;
+    background: #f5a623;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .card-back .back-footer {
+    text-align: center;
+    padding-top: 4px;
+    border-top: 1px solid #eee;
+  }
+
+  .card-back .back-cta {
+    font-family: 'Outfit', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    color: #0d4f4f;
+  }
+
+  .card-back .back-url {
+    font-size: 7px;
+    color: #f5a623;
+    font-weight: 600;
+  }
+
+  .card-back .ventures-line {
+    font-size: 5.5px;
+    color: #999;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Arlan LLC — Business Cards</h1>
+<p class="instructions">Print on 8.5×11 cardstock. Cut along dashed lines. Page 1 = Fronts, Page 2 = Backs.<br>
+<strong>Tip:</strong> Use Ctrl+P → set margins to "None" → print double-sided (flip on short edge).</p>
+
+<!-- ═══════════ PAGE 1: FRONTS ═══════════ -->
+<div class="card-sheet">
+  <div class="page-break-label">— FRONT SIDE (print first) —</div>
+
+  <!-- 10 front cards -->
+  <div class="card card-front" id="front1">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <div class="card card-front">
+    <div>
+      <div class="top-row">
+        <div class="mascot-circle">🐕</div>
+        <div class="brand-name">ARLAN</div>
+      </div>
+      <div class="tagline">Brilliance in Every Detail</div>
+      <div class="services-row">
+        <span class="service-pill">Holiday Lighting</span>
+        <span class="service-pill">Permanent LED</span>
+        <span class="service-pill">Landscape Lighting</span>
+        <span class="service-pill">Window Services</span>
+        <span class="service-pill">Garage Doors</span>
+        <span class="service-pill">Drone Inspections</span>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-info">
+        <strong>Dylan Thomas</strong>
+        Greensboro, NC<br>
+        (336) 890-0981<br>
+        dylan@arlanpro.com
+      </div>
+      <div class="website-box">arlanpro.com</div>
+    </div>
+    <div class="gold-bar"></div>
+  </div>
+
+</div>
+
+<!-- ═══════════ PAGE 2: BACKS ═══════════ -->
+<div class="card-sheet">
+  <div class="page-break-label">— BACK SIDE (print on reverse) —</div>
+
+  <!-- 10 back cards -->
+  <div class="card card-back">
+    <div class="back-header">
+      <div class="back-brand">ARLAN</div>
+      <div class="back-tagline">Premium Exterior & Interior Home Services</div>
+    </div>
+    <div class="services-grid">
+      <div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div>
+      <div class="svc-item"><span class="svc-dot"></span> Window Replacements</div>
+      <div class="svc-item"><span class="svc-dot"></span> Permanent LED</div>
+      <div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div>
+      <div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div>
+      <div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div>
+      <div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div>
+      <div class="svc-item"><span class="svc-dot"></span> Free Estimates</div>
+    </div>
+    <div class="back-footer">
+      <div class="back-cta">Free Estimates — Call or Visit Us Online</div>
+      <div class="back-url">arlanpro.com</div>
+      <div class="ventures-line">A Think! Ventures Cooperative Partner</div>
+    </div>
+  </div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+  <div class="card card-back"><div class="back-header"><div class="back-brand">ARLAN</div><div class="back-tagline">Premium Exterior & Interior Home Services</div></div><div class="services-grid"><div class="svc-item"><span class="svc-dot"></span> Holiday Lighting</div><div class="svc-item"><span class="svc-dot"></span> Window Replacements</div><div class="svc-item"><span class="svc-dot"></span> Permanent LED</div><div class="svc-item"><span class="svc-dot"></span> Garage Door Replacement</div><div class="svc-item"><span class="svc-dot"></span> Landscape Lighting</div><div class="svc-item"><span class="svc-dot"></span> Drone Roof Inspections</div><div class="svc-item"><span class="svc-dot"></span> Window Cleaning</div><div class="svc-item"><span class="svc-dot"></span> Free Estimates</div></div><div class="back-footer"><div class="back-cta">Free Estimates — Call or Visit Us Online</div><div class="back-url">arlanpro.com</div><div class="ventures-line">A Think! Ventures Cooperative Partner</div></div></div>
+
+</div>
+
+</body>
+</html>

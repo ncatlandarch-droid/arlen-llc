@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arlan LLC — Business Plan | Think! Ventures Foundation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: letter;
+    margin: 0.75in;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1a2a3a;
+    line-height: 1.6;
+    font-size: 11pt;
+    background: white;
+  }
+
+  @media print {
+    .no-print { display: none !important; }
+    .page-break { page-break-before: always; }
+  }
+
+  .no-print {
+    background: #0d4f4f;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+  .no-print a { color: #f5a623; text-decoration: none; font-weight: 700; }
+
+  /* ─── COVER PAGE ─── */
+  .cover-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0d4f4f 0%, #0a3a3a 60%, #061f1f 100%);
+    color: white;
+    margin: -0.75in;
+    padding: 1in;
+    page-break-after: always;
+  }
+
+  .cover-mascot {
+    font-size: 80px;
+    margin-bottom: 20px;
+  }
+
+  .cover-brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: #f5a623;
+    letter-spacing: 8px;
+    margin-bottom: 8px;
+  }
+
+  .cover-tagline {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .cover-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .cover-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 60px;
+  }
+
+  .cover-footer {
+    border-top: 2px solid rgba(245,166,35,0.3);
+    padding-top: 20px;
+  }
+
+  .cover-ventures {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .cover-ventures span { color: #f5a623; }
+
+  .cover-date {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 6px;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    max-width: 7in;
+    margin: 0 auto;
+    padding-top: 0.75in;
+  }
+
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 26pt;
+    font-weight: 800;
+    color: #0d4f4f;
+    margin-bottom: 8px;
+    border-bottom: 3px solid #f5a623;
+    padding-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #0d4f4f;
+    margin-top: 30px;
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: #f5a623;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  p { margin-bottom: 10px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 20px;
+    font-size: 10pt;
+  }
+
+  th {
+    background: #0d4f4f;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 10pt;
+  }
+
+  td {
+    padding: 6px 12px;
+    border-bottom: 1px solid #e8edf2;
+  }
+
+  tr:nth-child(even) td {
+    background: #f8f9fa;
+  }
+
+  tr:last-child td {
+    font-weight: 700;
+    border-top: 2px solid #0d4f4f;
+    background: #f0f5f5;
+  }
+
+  .highlight-box {
+    background: linear-gradient(135deg, #0d4f4f, #0a3a3a);
+    color: white;
+    padding: 20px 24px;
+    border-radius: 10px;
+    margin: 16px 0;
+  }
+
+  .highlight-box h3 { color: #f5a623; margin-top: 0; }
+  .highlight-box p { color: rgba(255,255,255,0.85); }
+
+  .gold-box {
+    background: #fdf0d5;
+    border-left: 4px solid #f5a623;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .gold-box strong { color: #0d4f4f; }
+
+  ul {
+    margin: 8px 0 16px 20px;
+  }
+
+  li { margin-bottom: 4px; }
+
+  .footer-bar {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 2px solid #e8edf2;
+    text-align: center;
+    color: #999;
+    font-size: 9pt;
+  }
+
+  .footer-bar strong { color: #0d4f4f; }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .stat-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #e8edf2;
+  }
+
+  .stat-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22pt;
+    font-weight: 800;
+    color: #0d4f4f;
+  }
+
+  .stat-label {
+    font-size: 9pt;
+    color: #4a5a6a;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="no-print">
+  📄 Print this page to PDF: <a href="javascript:window.print()">Ctrl+P → Save as PDF</a> | Set margins to "None" for best results
+</div>
+
+<!-- ═══════════ COVER PAGE ═══════════ -->
+<div class="cover-page">
+  <div class="cover-mascot">🐕</div>
+  <div class="cover-brand">ARLAN</div>
+  <div class="cover-tagline">Brilliance in Every Detail</div>
+  <div class="cover-title">Comprehensive Business Plan</div>
+  <div class="cover-subtitle">Premium Exterior & Interior Home Services | Greensboro, NC</div>
+  <div class="cover-footer">
+    <div class="cover-ventures">Prepared by <span>Think! Ventures Foundation</span></div>
+    <div class="cover-date">501(c)(3) Nonprofit Business Incubator | June 2026 | Version 3.0</div>
+  </div>
+</div>
+
+<!-- ═══════════ CONTENT ═══════════ -->
+<div class="content">
+
+<h1>Executive Summary</h1>
+
+<p><strong>Arlan LLC</strong> is a premium home services company based in Greensboro, NC, co-founded by Dylan Thomas and Chris Harrison. We deliver seven core services: seasonal holiday lighting, permanent LED systems, landscape lighting, window cleaning, window replacements, garage door replacements, and drone roof inspections.</p>
+
+<p>Arlan is the flagship company of <strong>Think! Ventures Foundation</strong>, a 501(c)(3) nonprofit that builds complete digital businesses for entrepreneurs at zero cost.</p>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-value">$83K+</div>
+    <div class="stat-label">Year 1 Revenue Target</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">$163K+</div>
+    <div class="stat-label">Year 2 Revenue Target</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">$278K+</div>
+    <div class="stat-label">Year 3 Revenue Target</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">7</div>
+    <div class="stat-label">Service Lines</div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <h3>$75,500+ in Digital Infrastructure — Delivered at $0 Cost</h3>
+  <p>Premium website, AI assistant, merch store, business plan, marketing materials, owner dashboard — all funded by Think! Ventures Foundation grants. Arlan pays nothing upfront. The only obligation is a 10% cooperative profit share when profitable.</p>
+</div>
+
+<h2>Company Information</h2>
+
+<table>
+  <tr><th>Detail</th><th>Information</th></tr>
+  <tr><td>Legal Name</td><td>Arlan LLC</td></tr>
+  <tr><td>Entity Type</td><td>North Carolina Limited Liability Company</td></tr>
+  <tr><td>Members</td><td>Dylan Thomas (50%) · Chris Harrison (50%)</td></tr>
+  <tr><td>Registered Agent</td><td>Dylan Thomas, Greensboro, NC</td></tr>
+  <tr><td>Phone</td><td>(336) 890-0981</td></tr>
+  <tr><td>Website</td><td>arlanpro.com</td></tr>
+  <tr><td>Cooperative Partner</td><td>Think! Ventures Foundation (10% of net profit)</td></tr>
+</table>
+
+<h2>Services & Pricing</h2>
+
+<table>
+  <tr><th>Service</th><th>Price Range</th><th>Margin</th><th>Performed By</th></tr>
+  <tr><td>Holiday Lighting (Residential)</td><td>$500 – $7,000</td><td>40–55%</td><td>Dylan</td></tr>
+  <tr><td>Holiday Lighting (Commercial)</td><td>$2,500 – $25,000</td><td>40–55%</td><td>Dylan</td></tr>
+  <tr><td>Permanent LED Systems</td><td>$4,000 – $12,000</td><td>45–65%</td><td>Dylan</td></tr>
+  <tr><td>Landscape Lighting</td><td>$2,000 – $8,000</td><td>40–55%</td><td>Dylan</td></tr>
+  <tr><td>Window Cleaning</td><td>$150 – $500</td><td>60–75%</td><td>Dylan</td></tr>
+  <tr><td>Window Replacements</td><td>$800 – $2,000</td><td>30–40%</td><td>Dylan / Sub</td></tr>
+  <tr><td>Garage Door Replacement</td><td>$1,200 – $3,000</td><td>15–20%*</td><td>Nick (Sub)</td></tr>
+  <tr><td>Drone Roof Inspections</td><td>$150 – $1,500</td><td>75–90%</td><td>Dylan / Chris</td></tr>
+  <tr><td colspan="4" style="font-size:9pt;color:#666;">*After subcontractor payment (Arlan retains 15–20% management fee)</td></tr>
+</table>
+
+<div class="page-break"></div>
+
+<h2>Financial Projections — Year 1</h2>
+
+<table>
+  <tr><th>Service</th><th>Est. Jobs</th><th>Avg Revenue</th><th>Total</th></tr>
+  <tr><td>Holiday Lighting</td><td>12</td><td>$2,917</td><td>$35,000</td></tr>
+  <tr><td>Permanent LED</td><td>5</td><td>$3,500</td><td>$17,500</td></tr>
+  <tr><td>Landscape Lighting</td><td>5</td><td>$1,500</td><td>$7,500</td></tr>
+  <tr><td>Window Cleaning</td><td>30</td><td>$200</td><td>$6,000</td></tr>
+  <tr><td>Window Replacements</td><td>3</td><td>$1,400</td><td>$4,200</td></tr>
+  <tr><td>Garage Doors (sub)</td><td>4</td><td>$2,100</td><td>$8,400</td></tr>
+  <tr><td>Drone Inspections</td><td>20</td><td>$150</td><td>$3,000</td></tr>
+  <tr><td>Merch Sales</td><td>—</td><td>—</td><td>$2,000</td></tr>
+  <tr><td><strong>TOTAL</strong></td><td></td><td></td><td><strong>$83,600</strong></td></tr>
+</table>
+
+<h3>Year 1 Profit & Loss</h3>
+<table>
+  <tr><th>Line Item</th><th>Amount</th></tr>
+  <tr><td>Gross Revenue</td><td>$83,600</td></tr>
+  <tr><td>Less: Materials & Supplies (25%)</td><td>($20,900)</td></tr>
+  <tr><td>Less: Subcontractor Payments</td><td>($6,720)</td></tr>
+  <tr><td>Less: Operating Expenses (15%)</td><td>($12,540)</td></tr>
+  <tr><td><strong>Net Profit</strong></td><td><strong>$43,440</strong></td></tr>
+  <tr><td>Less: Cooperative Share (10%)</td><td>($4,344)</td></tr>
+  <tr><td><strong>Distributable Profit</strong></td><td><strong>$39,096</strong></td></tr>
+</table>
+
+<h2>The Cooperative Advantage</h2>
+
+<div class="gold-box">
+  <strong>Unlike a franchise fee that disappears, the 10% cooperative share comes back to you.</strong> 40% funds the Think! mission. 20% goes into your savings fund. 20% returns as annual dividends. 20% reinvests in growth tools for all operators. When you don't profit, you pay nothing.
+</div>
+
+<table>
+  <tr><th>Co-op Allocation</th><th>% of 10%</th><th>What It Does</th></tr>
+  <tr><td>Think! Foundation Mission</td><td>40%</td><td>Funds next business launches</td></tr>
+  <tr><td>Operator Savings Fund</td><td>20%</td><td>Your emergency fund / nest egg</td></tr>
+  <tr><td>Annual Patronage Dividends</td><td>20%</td><td>Cash back at year-end</td></tr>
+  <tr><td>Growth Reinvestment</td><td>20%</td><td>Better tools, marketing, training</td></tr>
+</table>
+
+<h2>Startup Costs</h2>
+
+<table>
+  <tr><th>Item</th><th>Cost</th></tr>
+  <tr><td>NC LLC Filing</td><td>$125</td></tr>
+  <tr><td>EIN (Federal Tax ID)</td><td>$0</td></tr>
+  <tr><td>General Liability Insurance (annual)</td><td>$360–$600</td></tr>
+  <tr><td>Holiday Light Inventory</td><td>$3,000–$5,000</td></tr>
+  <tr><td>Ladders & Installation Equipment</td><td>$500–$1,000</td></tr>
+  <tr><td>Window Cleaning Kit</td><td>$300–$500</td></tr>
+  <tr><td>DJI Drone + FAA Exam</td><td>$2,175–$3,175</td></tr>
+  <tr><td>Vehicle Branding</td><td>$200–$300</td></tr>
+  <tr><td>Marketing (first batch)</td><td>$100–$200</td></tr>
+  <tr><td>Website & Technology (Think! Ventures)</td><td>$0</td></tr>
+  <tr><td><strong>TOTAL STARTUP</strong></td><td><strong>$6,760–$10,800</strong></td></tr>
+</table>
+
+<div class="page-break"></div>
+
+<h2>Growth Strategy</h2>
+
+<table>
+  <tr><th>Phase</th><th>Timeline</th><th>Revenue Target</th><th>Key Milestones</th></tr>
+  <tr><td>1. Hustle & Master</td><td>Months 1–12</td><td>$83K</td><td>First 5 clients, build portfolio, 25+ Google reviews</td></tr>
+  <tr><td>2. Reputation</td><td>Year 2</td><td>$163K</td><td>Hire help, referral program, SEO dominance</td></tr>
+  <tr><td>3. Franchise Prep</td><td>Year 3</td><td>$278K</td><td>Complete SOPs, proven financials, standardized systems</td></tr>
+  <tr><td>4. Franchise Launch</td><td>Year 3–5</td><td>$500K+</td><td>Clone to new markets, franchise operators, regional brand</td></tr>
+</table>
+
+<h2>Contact</h2>
+
+<table>
+  <tr><th>Name</th><th>Role</th><th>Contact</th></tr>
+  <tr><td>Dylan Thomas</td><td>Operations & Sales</td><td>(336) 890-0981 · dylan@arlanpro.com</td></tr>
+  <tr><td>Chris Harrison</td><td>Technology & Strategy</td><td>chris@thinkventures.org</td></tr>
+  <tr><td colspan="3" style="text-align:center;color:#999;">arlanpro.com · think-ventures.netlify.app</td></tr>
+</table>
+
+<div class="footer-bar">
+  <strong>Prepared by Think! Ventures Foundation</strong> · 501(c)(3) Nonprofit Business Incubator<br>
+  From Dream to Launch in Days.
+</div>
+
+</div>
+
+</body>
+</html>

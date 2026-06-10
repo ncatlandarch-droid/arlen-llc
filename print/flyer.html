@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arlan LLC — Neighborhood Flyer (Print Ready)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #e8e8e8;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { font-family: 'Outfit', sans-serif; text-align: center; margin-bottom: 5px; color: #1a2a3a; }
+  .instructions { text-align: center; color: #666; margin-bottom: 30px; font-size: 13px; max-width: 600px; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    h1, .instructions { display: none !important; }
+    .flyer { box-shadow: none !important; margin: 0 !important; }
+  }
+
+  .flyer {
+    width: 8.5in;
+    height: 11in;
+    background: white;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── TOP BANNER ─── */
+  .top-banner {
+    background: linear-gradient(135deg, #0d4f4f 0%, #0a3a3a 60%, #061f1f 100%);
+    padding: 0.4in 0.5in 0.35in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .top-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f5a623, #e8941a, #f5a623);
+  }
+
+  .banner-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .banner-mascot {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: rgba(245,166,35,0.2);
+    border: 2.5px solid #f5a623;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .banner-brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: #f5a623;
+    letter-spacing: 5px;
+  }
+
+  .banner-tagline {
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: -4px;
+  }
+
+  .banner-right {
+    text-align: right;
+  }
+
+  .banner-website {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+  }
+  .banner-website span { color: #f5a623; }
+
+  .banner-phone {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+  }
+
+  /* ─── HERO HEADLINE ─── */
+  .hero-section {
+    padding: 0.35in 0.5in 0.25in;
+    text-align: center;
+    background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+  }
+
+  .hero-headline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: #0d4f4f;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+
+  .hero-headline span { color: #f5a623; }
+
+  .hero-sub {
+    font-size: 14px;
+    color: #4a5a6a;
+    line-height: 1.4;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  /* ─── SERVICES GRID ─── */
+  .services-section {
+    padding: 0.2in 0.5in;
+  }
+
+  .section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #f5a623;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .service-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    border: 1.5px solid #e8edf2;
+    transition: all 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: #f5a623;
+    transform: translateY(-2px);
+  }
+
+  .service-emoji {
+    font-size: 28px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0d4f4f;
+    margin-bottom: 3px;
+  }
+
+  .service-desc {
+    font-size: 9px;
+    color: #4a5a6a;
+    line-height: 1.3;
+  }
+
+  /* ─── WHY ARLAN ─── */
+  .why-section {
+    padding: 0.2in 0.5in;
+    display: flex;
+    gap: 12px;
+  }
+
+  .why-card {
+    flex: 1;
+    background: #0d4f4f;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .why-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #f5a623;
+    line-height: 1;
+  }
+
+  .why-label {
+    font-size: 9px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 3px;
+    font-weight: 500;
+  }
+
+  /* ─── CTA BOX ─── */
+  .cta-section {
+    margin: 0.15in 0.5in;
+    background: linear-gradient(135deg, #f5a623 0%, #e8941a 100%);
+    border-radius: 12px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cta-left h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #0d4f4f;
+    margin-bottom: 3px;
+  }
+
+  .cta-left p {
+    font-size: 11px;
+    color: rgba(13,79,79,0.75);
+    font-weight: 500;
+  }
+
+  .cta-right {
+    text-align: right;
+  }
+
+  .cta-phone {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0d4f4f;
+    margin-bottom: 2px;
+  }
+
+  .cta-url {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+  }
+
+  /* ─── BOTTOM ─── */
+  .bottom-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #0d4f4f;
+    padding: 8px 0.5in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .bottom-left {
+    font-size: 9px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .bottom-right {
+    font-size: 8px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── TEAR-OFF TABS ─── */
+  .tear-section {
+    padding: 0.1in 0.5in 0.5in;
+  }
+
+  .tear-line {
+    border-top: 2px dashed #ccc;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .tear-label {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0 8px;
+    font-size: 7px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .tear-tabs {
+    display: flex;
+    gap: 0;
+  }
+
+  .tear-tab {
+    flex: 1;
+    border: 1px dashed #ddd;
+    padding: 6px 4px;
+    text-align: center;
+  }
+
+  .tear-tab .t-brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    color: #0d4f4f;
+    letter-spacing: 1px;
+  }
+
+  .tear-tab .t-phone {
+    font-size: 9px;
+    color: #1a2a3a;
+    font-weight: 600;
+  }
+
+  .tear-tab .t-url {
+    font-size: 7px;
+    color: #f5a623;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<h1>Arlan LLC — Neighborhood Flyer</h1>
+<p class="instructions">Print on 8.5×11 paper or cardstock. Includes tear-off tabs at the bottom.<br>
+<strong>Note:</strong> Update Dylan's phone number and email before printing!</p>
+
+<div class="flyer">
+
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="banner-left">
+      <div class="banner-mascot">🐕</div>
+      <div>
+        <div class="banner-brand">ARLAN</div>
+        <div class="banner-tagline">Brilliance in Every Detail</div>
+      </div>
+    </div>
+    <div class="banner-right">
+      <div class="banner-website">arlan<span>pro</span>.com</div>
+      <div class="banner-phone">📞 (336) 890-0981</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-section">
+    <h1 class="hero-headline">Your Home Deserves<br><span>Brilliance</span></h1>
+    <p class="hero-sub">Premium exterior and interior home services — from stunning holiday displays to year-round maintenance. Locally owned, professionally operated.</p>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="services-section">
+    <div class="section-title">Our Services</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-emoji">✨</span>
+        <div class="service-name">Holiday Lighting</div>
+        <div class="service-desc">Custom seasonal displays. We design, install, maintain & store.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">💡</span>
+        <div class="service-name">Permanent LED</div>
+        <div class="service-desc">App-controlled roofline lights. Change colors anytime.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">🌿</span>
+        <div class="service-name">Landscape Lighting</div>
+        <div class="service-desc">Brass & copper fixtures. Uplighting, pathways, accents.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">🪟</span>
+        <div class="service-name">Window Services</div>
+        <div class="service-desc">Cleaning & replacements. Crystal-clear, energy efficient.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">🚪</span>
+        <div class="service-name">Garage Doors</div>
+        <div class="service-desc">Replacement & installation. Modern styles, reliable openers.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">🛩️</span>
+        <div class="service-name">Drone Inspections</div>
+        <div class="service-desc">FAA-licensed aerial roof surveys. HD photos & video.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY ARLAN -->
+  <div class="why-section">
+    <div class="why-card">
+      <div class="why-number">FREE</div>
+      <div class="why-label">Estimates — No Obligation</div>
+    </div>
+    <div class="why-card">
+      <div class="why-number">LOCAL</div>
+      <div class="why-label">Greensboro Owned & Operated</div>
+    </div>
+    <div class="why-card">
+      <div class="why-number">24hr</div>
+      <div class="why-label">Quote Response Time</div>
+    </div>
+    <div class="why-card">
+      <div class="why-number">100%</div>
+      <div class="why-label">Satisfaction Guaranteed</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-left">
+      <h2>Get Your FREE Estimate Today</h2>
+      <p>No obligation. No pressure. Just honest pricing from your neighbors.</p>
+    </div>
+    <div class="cta-right">
+      <div class="cta-phone">(336) 890-0981</div>
+      <div class="cta-url">arlanpro.com</div>
+    </div>
+  </div>
+
+  <!-- TEAR-OFF TABS -->
+  <div class="tear-section">
+    <div class="tear-line">
+      <span class="tear-label">✂ Tear Off</span>
+    </div>
+    <div class="tear-tabs">
+      <div class="tear-tab">
+        <div class="t-brand">ARLAN</div>
+        <div class="t-phone">(336) 890-0981</div>
+        <div class="t-url">arlanpro.com</div>
+      </div>
+      <div class="tear-tab">
+        <div class="t-brand">ARLAN</div>
+        <div class="t-phone">(336) 890-0981</div>
+        <div class="t-url">arlanpro.com</div>
+      </div>
+      <div class="tear-tab">
+        <div class="t-brand">ARLAN</div>
+        <div class="t-phone">(336) 890-0981</div>
+        <div class="t-url">arlanpro.com</div>
+      </div>
+      <div class="tear-tab">
+        <div class="t-brand">ARLAN</div>
+        <div class="t-phone">(336) 890-0981</div>
+        <div class="t-url">arlanpro.com</div>
+      </div>
+      <div class="tear-tab">
+        <div class="t-brand">ARLAN</div>
+        <div class="t-phone">(336) 890-0981</div>
+        <div class="t-url">arlanpro.com</div>
+      </div>
+      <div class="tear-tab">
+        <div class="t-brand">ARLAN</div>
+        <div class="t-phone">(336) 890-0981</div>
+        <div class="t-url">arlanpro.com</div>
+      </div>
+      <div class="tear-tab">
+        <div class="t-brand">ARLAN</div>
+        <div class="t-phone">(336) 890-0981</div>
+        <div class="t-url">arlanpro.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-section">
+    <div class="bottom-left">Licensed & Insured · Greensboro, NC</div>
+    <div class="bottom-right">A Think! Ventures Cooperative Partner</div>
+  </div>
+
+</div>
+
+</body>
+</html>

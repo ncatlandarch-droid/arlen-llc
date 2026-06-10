@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arlan LLC — Owner Dashboard</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ============ LOGIN SCREEN ============ -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <div class="login-logo">
+        <span class="login-logo__icon">🐕</span>
+        <h1 class="login-logo__text">ARLAN</h1>
+        <span class="login-logo__llc">LLC</span>
+      </div>
+      <p class="login-subtitle">Owner Dashboard</p>
+      <form id="loginForm" autocomplete="off">
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="input-icon-wrap">
+            <input type="password" id="loginPassword" placeholder="Enter dashboard password" required>
+            <button type="button" class="input-icon-btn" id="togglePwdVis" aria-label="Toggle password visibility">👁</button>
+          </div>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="rememberMe">
+          <label for="rememberMe">Remember me</label>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Access Dashboard</button>
+        <p class="login-error" id="loginError"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ DASHBOARD SHELL ============ -->
+  <div class="dashboard" id="dashboard" style="display:none;">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__header">
+        <div class="sidebar__brand">
+          <span class="sidebar__mascot">🐕</span>
+          <div>
+            <span class="sidebar__name">ARLAN</span>
+            <span class="sidebar__llc">LLC</span>
+          </div>
+        </div>
+        <button class="sidebar__collapse-btn" id="sidebarCollapseBtn" aria-label="Toggle sidebar">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="sidebar__nav">
+        <button class="sidebar__link active" data-tab="jobs">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Jobs & Appointments</span>
+        </button>
+        <button class="sidebar__link" data-tab="finances">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span>Finances</span>
+        </button>
+        <button class="sidebar__link" data-tab="tax">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Tax Prep</span>
+        </button>
+        <button class="sidebar__link" data-tab="subs">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Subcontractors</span>
+        </button>
+      </nav>
+
+      <div class="sidebar__footer">
+        <button class="sidebar__link" data-tab="settings">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </button>
+        <div class="sidebar__user">
+          <div class="sidebar__avatar">DT</div>
+          <div class="sidebar__user-info">
+            <span class="sidebar__user-name">Dylan Thomas</span>
+            <span class="sidebar__user-role">Owner</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main" id="mainContent">
+
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+          <div>
+            <h2 class="topbar__greeting" id="topbarGreeting">Welcome back, Dylan</h2>
+            <p class="topbar__date" id="topbarDate"></p>
+          </div>
+        </div>
+        <div class="topbar__right">
+          <div class="topbar__clock" id="topbarClock"></div>
+        </div>
+      </header>
+
+      <!-- TAB: JOBS & APPOINTMENTS -->
+      <section class="tab-panel active" id="panel-jobs">
+        <!-- KPIs -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Jobs This Month</span>
+              <span class="kpi-card__value" id="kpiJobsMonth">0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Revenue Pipeline</span>
+              <span class="kpi-card__value" id="kpiPipeline">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--emerald">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Close Rate</span>
+              <span class="kpi-card__value" id="kpiCloseRate">0%</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Avg Job Value</span>
+              <span class="kpi-card__value" id="kpiAvgJob">$0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Row -->
+        <div class="controls-row">
+          <div class="controls-row__left">
+            <button class="btn btn--primary" id="btnAddJob">+ Add New Job</button>
+            <div class="view-toggle">
+              <button class="view-toggle__btn active" data-view="pipeline">Pipeline</button>
+              <button class="view-toggle__btn" data-view="calendar">Calendar</button>
+            </div>
+          </div>
+          <div class="controls-row__right">
+            <select class="filter-select" id="filterService">
+              <option value="">All Services</option>
+              <option value="holiday_lighting">Holiday Lighting</option>
+              <option value="permanent_led">Permanent LED</option>
+              <option value="landscape_lighting">Landscape Lighting</option>
+              <option value="window_cleaning">Window Cleaning</option>
+              <option value="drone_inspection">Drone Inspection</option>
+              <option value="other">Other</option>
+            </select>
+            <select class="filter-select" id="filterStatus">
+              <option value="">All Statuses</option>
+              <option value="lead">Lead</option>
+              <option value="estimate">Estimate</option>
+              <option value="booked">Booked</option>
+              <option value="in_progress">In Progress</option>
+              <option value="complete">Complete</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Pipeline View -->
+        <div class="pipeline" id="pipelineView">
+          <div class="pipeline__col" data-status="lead">
+            <div class="pipeline__col-header"><span class="pipeline__dot pipeline__dot--lead"></span>Lead <span class="pipeline__count" id="countLead">0</span></div>
+            <div class="pipeline__cards" id="colLead"></div>
+          </div>
+          <div class="pipeline__col" data-status="estimate">
+            <div class="pipeline__col-header"><span class="pipeline__dot pipeline__dot--estimate"></span>Estimate <span class="pipeline__count" id="countEstimate">0</span></div>
+            <div class="pipeline__cards" id="colEstimate"></div>
+          </div>
+          <div class="pipeline__col" data-status="booked">
+            <div class="pipeline__col-header"><span class="pipeline__dot pipeline__dot--booked"></span>Booked <span class="pipeline__count" id="countBooked">0</span></div>
+            <div class="pipeline__cards" id="colBooked"></div>
+          </div>
+          <div class="pipeline__col" data-status="in_progress">
+            <div class="pipeline__col-header"><span class="pipeline__dot pipeline__dot--progress"></span>In Progress <span class="pipeline__count" id="countInProgress">0</span></div>
+            <div class="pipeline__cards" id="colInProgress"></div>
+          </div>
+          <div class="pipeline__col" data-status="complete">
+            <div class="pipeline__col-header"><span class="pipeline__dot pipeline__dot--complete"></span>Complete <span class="pipeline__count" id="countComplete">0</span></div>
+            <div class="pipeline__cards" id="colComplete"></div>
+          </div>
+          <div class="pipeline__col" data-status="paid">
+            <div class="pipeline__col-header"><span class="pipeline__dot pipeline__dot--paid"></span>Paid <span class="pipeline__count" id="countPaid">0</span></div>
+            <div class="pipeline__cards" id="colPaid"></div>
+          </div>
+        </div>
+
+        <!-- Calendar View -->
+        <div class="calendar-view" id="calendarView" style="display:none;">
+          <div class="calendar-controls">
+            <button class="btn btn--sm btn--outline" id="calPrev">← Prev</button>
+            <h3 class="calendar-title" id="calTitle"></h3>
+            <button class="btn btn--sm btn--outline" id="calNext">Next →</button>
+            <div class="view-toggle" style="margin-left:auto;">
+              <button class="view-toggle__btn active" data-calview="month">Month</button>
+              <button class="view-toggle__btn" data-calview="week">Week</button>
+            </div>
+          </div>
+          <div class="calendar-grid" id="calGrid"></div>
+        </div>
+      </section>
+
+      <!-- TAB: FINANCES -->
+      <section class="tab-panel" id="panel-finances">
+        <div class="kpi-grid kpi-grid--6">
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--emerald">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Monthly Revenue</span>
+              <span class="kpi-card__value kpi--positive" id="kpiRevenue">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Monthly Expenses</span>
+              <span class="kpi-card__value kpi--negative" id="kpiExpenses">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Net Profit</span>
+              <span class="kpi-card__value" id="kpiNetProfit">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Co-op Share (10%)</span>
+              <span class="kpi-card__value" id="kpiCoop">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Chris's Split (50%)</span>
+              <span class="kpi-card__value" id="kpiChris">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon kpi-card__icon--emerald">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Dylan's Split (50%)</span>
+              <span class="kpi-card__value" id="kpiDylan">$0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finance Controls -->
+        <div class="controls-row">
+          <div class="controls-row__left">
+            <button class="btn btn--primary" id="btnLogRevenue">+ Log Revenue</button>
+            <button class="btn btn--outline" id="btnLogExpense">+ Log Expense</button>
+          </div>
+          <div class="controls-row__right">
+            <div class="view-toggle">
+              <button class="view-toggle__btn active" data-period="monthly">Monthly</button>
+              <button class="view-toggle__btn" data-period="quarterly">Quarterly</button>
+              <button class="view-toggle__btn" data-period="ytd">YTD</button>
+            </div>
+            <button class="btn btn--sm btn--outline" id="btnExportCSV">Export CSV</button>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-row">
+          <div class="chart-card">
+            <h4 class="chart-card__title">Monthly Revenue</h4>
+            <canvas id="chartRevenue"></canvas>
+          </div>
+          <div class="chart-card">
+            <h4 class="chart-card__title">Revenue by Service</h4>
+            <canvas id="chartService"></canvas>
+          </div>
+        </div>
+
+        <!-- P&L Statement -->
+        <div class="glass-panel">
+          <h4 class="glass-panel__title">Profit & Loss Statement</h4>
+          <div class="pnl-table" id="pnlTable"></div>
+        </div>
+      </section>
+
+      <!-- TAB: TAX PREP -->
+      <section class="tab-panel" id="panel-tax">
+        <!-- Tax Calculator -->
+        <div class="kpi-grid">
+          <div class="kpi-card kpi-card--wide">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Federal SE Tax (15.3%)</span>
+              <span class="kpi-card__value" id="kpiSETax">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-card--wide">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Federal Income Tax (22%)</span>
+              <span class="kpi-card__value" id="kpiFedTax">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-card--wide">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">NC State Tax (4.5%)</span>
+              <span class="kpi-card__value" id="kpiStateTax">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-card--wide kpi-card--highlight">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Total Tax Liability</span>
+              <span class="kpi-card__value" id="kpiTotalTax">$0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Set-aside recommendation -->
+        <div class="tax-setaside glass-panel">
+          <h4 class="glass-panel__title">💡 Recommended Tax Set-Aside</h4>
+          <p class="tax-setaside__text">Based on your net profit, you should set aside <strong id="taxSetAside">$0</strong> (25-30% of net).</p>
+        </div>
+
+        <!-- Due Date Countdown Cards -->
+        <h4 class="section-heading">Quarterly Due Dates</h4>
+        <div class="kpi-grid" id="dueDateCards"></div>
+
+        <!-- Deductions Log -->
+        <div class="controls-row">
+          <h4 class="section-heading">Deductions Log</h4>
+          <button class="btn btn--sm btn--outline" id="btnExportTaxCSV">Export for Accountant</button>
+        </div>
+        <div class="glass-panel">
+          <table class="data-table" id="deductionsTable">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="deductionsBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Mileage Tracker -->
+        <div class="controls-row" style="margin-top:var(--sp-xl);">
+          <h4 class="section-heading">Mileage Tracker</h4>
+          <button class="btn btn--primary btn--sm" id="btnAddMileage">+ Log Mileage</button>
+        </div>
+        <div class="kpi-grid" style="margin-bottom:var(--sp-lg);">
+          <div class="kpi-card">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Total Miles</span>
+              <span class="kpi-card__value" id="kpiTotalMiles">0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Mileage Deduction ($0.70/mi)</span>
+              <span class="kpi-card__value kpi--positive" id="kpiMileageDeduction">$0</span>
+            </div>
+          </div>
+        </div>
+        <div class="glass-panel">
+          <table class="data-table" id="mileageTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Miles</th>
+                <th>Purpose</th>
+                <th>Deduction</th>
+              </tr>
+            </thead>
+            <tbody id="mileageBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Year-end Summary -->
+        <h4 class="section-heading" style="margin-top:var(--sp-xl);">Year-End Summary</h4>
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Total Revenue (YTD)</span>
+              <span class="kpi-card__value kpi--positive" id="kpiYTDRevenue">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Total Expenses (YTD)</span>
+              <span class="kpi-card__value kpi--negative" id="kpiYTDExpenses">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Total Deductions</span>
+              <span class="kpi-card__value" id="kpiTotalDeductions">$0</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-card--highlight">
+            <div class="kpi-card__body">
+              <span class="kpi-card__label">Estimated Tax</span>
+              <span class="kpi-card__value" id="kpiEstTax">$0</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: SUBCONTRACTORS -->
+      <section class="tab-panel" id="panel-subs">
+        <div class="controls-row">
+          <h4 class="section-heading">Subcontractor Directory</h4>
+          <button class="btn btn--primary btn--sm" id="btnAddSub">+ Add Subcontractor</button>
+        </div>
+
+        <div class="subs-grid" id="subsGrid"></div>
+
+        <!-- Sub Jobs -->
+        <h4 class="section-heading" style="margin-top:var(--sp-xl);">Jobs Assigned to Subs</h4>
+        <div class="glass-panel">
+          <table class="data-table" id="subJobsTable">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Quoted</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="subJobsBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Payment Log -->
+        <div class="controls-row" style="margin-top:var(--sp-xl);">
+          <h4 class="section-heading">Payment Log</h4>
+          <button class="btn btn--primary btn--sm" id="btnAddSubPayment">+ Add Payment</button>
+        </div>
+        <div class="glass-panel">
+          <table class="data-table" id="subPaymentsTable">
+            <thead>
+              <tr>
+                <th>Subcontractor</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Job Reference</th>
+                <th>Service</th>
+              </tr>
+            </thead>
+            <tbody id="subPaymentsBody"></tbody>
+          </table>
+        </div>
+
+        <!-- 1099 Summary -->
+        <h4 class="section-heading" style="margin-top:var(--sp-xl);">1099-NEC Summary</h4>
+        <div class="subs-1099" id="subs1099"></div>
+      </section>
+
+      <!-- TAB: SETTINGS -->
+      <section class="tab-panel" id="panel-settings">
+        <div class="settings-grid">
+          <div class="glass-panel">
+            <h4 class="glass-panel__title">Change Password</h4>
+            <form id="formChangePassword">
+              <div class="form-group">
+                <label>Current Password</label>
+                <input type="password" id="settCurrentPwd" required>
+              </div>
+              <div class="form-group">
+                <label>New Password</label>
+                <input type="password" id="settNewPwd" required>
+              </div>
+              <div class="form-group">
+                <label>Confirm New Password</label>
+                <input type="password" id="settConfirmPwd" required>
+              </div>
+              <button type="submit" class="btn btn--primary">Update Password</button>
+            </form>
+          </div>
+
+          <div class="glass-panel">
+            <h4 class="glass-panel__title">Business Information</h4>
+            <form id="formBizInfo">
+              <div class="form-group">
+                <label>Business Name</label>
+                <input type="text" id="settBizName" value="Arlan LLC">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" id="settBizPhone">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="settBizEmail">
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" id="settBizAddress">
+              </div>
+              <button type="submit" class="btn btn--primary">Save Info</button>
+            </form>
+          </div>
+
+          <div class="glass-panel">
+            <h4 class="glass-panel__title">Data Management</h4>
+            <div class="settings-actions">
+              <button class="btn btn--primary btn--full" id="btnExportJSON">📦 Export All Data (JSON)</button>
+              <label class="btn btn--outline btn--full" style="text-align:center;cursor:pointer;">
+                📥 Import Data (JSON)
+                <input type="file" id="btnImportJSON" accept=".json" style="display:none;">
+              </label>
+              <button class="btn btn--danger btn--full" id="btnClearAll">🗑️ Clear All Data</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============ MODALS ============ -->
+
+  <!-- Add/Edit Job Modal -->
+  <div class="modal-overlay" id="modalJob">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title" id="modalJobTitle">Add New Job</h3>
+        <button class="modal__close" data-close="modalJob">&times;</button>
+      </div>
+      <form id="formJob" class="modal__body">
+        <input type="hidden" id="jobId">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Customer Name *</label>
+            <input type="text" id="jobCustomer" required>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="jobPhone">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="jobEmail">
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" id="jobAddress">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Service Type *</label>
+            <select id="jobService" required>
+              <option value="">Select...</option>
+              <option value="holiday_lighting">Holiday Lighting</option>
+              <option value="permanent_led">Permanent LED</option>
+              <option value="landscape_lighting">Landscape Lighting</option>
+              <option value="window_cleaning">Window Cleaning</option>
+              <option value="drone_inspection">Drone Inspection</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quoted Amount ($)</label>
+            <input type="number" id="jobQuoted" step="0.01" min="0">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Status</label>
+            <select id="jobStatus">
+              <option value="lead">Lead</option>
+              <option value="estimate">Estimate</option>
+              <option value="booked">Booked</option>
+              <option value="in_progress">In Progress</option>
+              <option value="complete">Complete</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="jobDate">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Assigned To</label>
+            <select id="jobAssigned">
+              <option value="dylan">Dylan</option>
+              <option value="nick">Nick</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Source</label>
+            <select id="jobSource">
+              <option value="website">Website</option>
+              <option value="flyer">Flyer</option>
+              <option value="door_hanger">Door Hanger</option>
+              <option value="referral">Referral</option>
+              <option value="ai_chat">AI Chat</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes</label>
+          <textarea id="jobNotes" rows="3"></textarea>
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--outline" data-close="modalJob">Cancel</button>
+          <button type="button" class="btn btn--danger" id="btnDeleteJob" style="display:none;">Delete</button>
+          <button type="submit" class="btn btn--primary">Save Job</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Log Revenue Modal -->
+  <div class="modal-overlay" id="modalRevenue">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Log Revenue</h3>
+        <button class="modal__close" data-close="modalRevenue">&times;</button>
+      </div>
+      <form id="formRevenue" class="modal__body">
+        <input type="hidden" id="revId">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Amount ($) *</label>
+            <input type="number" id="revAmount" step="0.01" min="0" required>
+          </div>
+          <div class="form-group">
+            <label>Service Type</label>
+            <select id="revService">
+              <option value="holiday_lighting">Holiday Lighting</option>
+              <option value="permanent_led">Permanent LED</option>
+              <option value="landscape_lighting">Landscape Lighting</option>
+              <option value="window_cleaning">Window Cleaning</option>
+              <option value="drone_inspection">Drone Inspection</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="revDate">
+          </div>
+          <div class="form-group">
+            <label>Payment Method</label>
+            <select id="revMethod">
+              <option value="cash">Cash</option>
+              <option value="check">Check</option>
+              <option value="stripe">Stripe</option>
+              <option value="venmo">Venmo</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Linked Job (optional)</label>
+          <select id="revLinkedJob"><option value="">None</option></select>
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--outline" data-close="modalRevenue">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save Revenue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Log Expense Modal -->
+  <div class="modal-overlay" id="modalExpense">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Log Expense</h3>
+        <button class="modal__close" data-close="modalExpense">&times;</button>
+      </div>
+      <form id="formExpense" class="modal__body">
+        <input type="hidden" id="expId">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Amount ($) *</label>
+            <input type="number" id="expAmount" step="0.01" min="0" required>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="expCategory">
+              <option value="materials">Materials</option>
+              <option value="gas">Gas</option>
+              <option value="insurance">Insurance</option>
+              <option value="tools">Tools</option>
+              <option value="marketing">Marketing</option>
+              <option value="sub_payment">Sub Payment</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Description</label>
+            <input type="text" id="expDescription">
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="expDate">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Deductible?</label>
+          <select id="expDeductible">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--outline" data-close="modalExpense">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save Expense</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mileage Modal -->
+  <div class="modal-overlay" id="modalMileage">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Log Mileage</h3>
+        <button class="modal__close" data-close="modalMileage">&times;</button>
+      </div>
+      <form id="formMileage" class="modal__body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="mileDate">
+          </div>
+          <div class="form-group">
+            <label>Miles *</label>
+            <input type="number" id="mileMiles" step="0.1" min="0" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>From</label>
+            <input type="text" id="mileFrom">
+          </div>
+          <div class="form-group">
+            <label>To</label>
+            <input type="text" id="mileTo">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Purpose</label>
+            <input type="text" id="milePurpose">
+          </div>
+          <div class="form-group">
+            <label>Linked Job</label>
+            <select id="mileLinkedJob"><option value="">None</option></select>
+          </div>
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--outline" data-close="modalMileage">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save Mileage</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Sub Modal -->
+  <div class="modal-overlay" id="modalSub">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Add Subcontractor</h3>
+        <button class="modal__close" data-close="modalSub">&times;</button>
+      </div>
+      <form id="formSub" class="modal__body">
+        <input type="hidden" id="subId">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" id="subName" required>
+          </div>
+          <div class="form-group">
+            <label>LLC Name</label>
+            <input type="text" id="subLLC">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="subPhone">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="subEmail">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>EIN</label>
+            <input type="text" id="subEIN">
+          </div>
+          <div class="form-group">
+            <label>W-9 Status</label>
+            <select id="subW9">
+              <option value="not_received">Not Received</option>
+              <option value="received">Received</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--outline" data-close="modalSub">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save Subcontractor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Sub Payment Modal -->
+  <div class="modal-overlay" id="modalSubPayment">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Add Sub Payment</h3>
+        <button class="modal__close" data-close="modalSubPayment">&times;</button>
+      </div>
+      <form id="formSubPayment" class="modal__body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Subcontractor *</label>
+            <select id="spSub" required><option value="">Select...</option></select>
+          </div>
+          <div class="form-group">
+            <label>Amount ($) *</label>
+            <input type="number" id="spAmount" step="0.01" min="0" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="spDate">
+          </div>
+          <div class="form-group">
+            <label>Service Type</label>
+            <select id="spService">
+              <option value="holiday_lighting">Holiday Lighting</option>
+              <option value="permanent_led">Permanent LED</option>
+              <option value="landscape_lighting">Landscape Lighting</option>
+              <option value="window_cleaning">Window Cleaning</option>
+              <option value="drone_inspection">Drone Inspection</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Job Reference</label>
+          <select id="spJob"><option value="">None</option></select>
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--outline" data-close="modalSubPayment">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav__btn active" data-tab="jobs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Jobs</span>
+    </button>
+    <button class="mobile-nav__btn" data-tab="finances">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <span>Finances</span>
+    </button>
+    <button class="mobile-nav__btn" data-tab="tax">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span>Tax</span>
+    </button>
+    <button class="mobile-nav__btn" data-tab="subs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <span>Subs</span>
+    </button>
+    <button class="mobile-nav__btn" data-tab="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09"/></svg>
+      <span>Settings</span>
+    </button>
+  </nav>
+
+  <script src="admin.js"></script>
+</body>
+</html>
