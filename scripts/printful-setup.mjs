@@ -21,7 +21,10 @@ if (!PRINTFUL_KEY) { console.error('ERROR: Set PRINTFUL_API_KEY env var'); proce
 // ═══════════════════════════════════════════════════════════════
 // ARLAN LLC CONFIGURATION
 // ═══════════════════════════════════════════════════════════════
-const STORE_ID = '18232014';  // Think! Apparel store
+const STORE_ID = '18232014';  // Think! Apparel (core store with API access)
+// NOTE: Arlan QuickStore (ID: 18310664) cannot use the API directly.
+// Products are created here in Think! Apparel, then copied to Arlan QuickStore
+// via Printful Dashboard → My Products → ⋮ → Copy to Store → Arlan
 const SITE_URL = 'https://arlanpro.com';
 const DESIGNS_PATH = '/printful-designs';
 
